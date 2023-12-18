@@ -30,8 +30,6 @@ add_executable(Work_Compliance_Analysis_System
         src/User/Sertificates.h
         src/User/SocialSkills.cpp
         src/User/SocialSkills.h
-        src/User/SpecialExceptions.cpp
-        src/User/SpecialExceptions.h
         src/User/WorkConditions.cpp
         src/User/WorkConditions.h
         src/User/WorkExperiences.cpp

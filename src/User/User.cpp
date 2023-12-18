@@ -5,6 +5,7 @@
 #include "User.h"
 #include <string>
 #include <iostream>
+#include <utility>
 
 using namespace std;
 
@@ -15,11 +16,23 @@ User::User(){
 User::User(string firstName,
            string lastName,
            string gender,
-           string dateOfBirth,
+           int birthDay,
+           int birthMonth,
+           int birthYear,
            string nationality,
            string identityNumber,
            bool militaryService,
-           bool workingStatus){
+           bool workingStatus)
+           :
+           FirstName{move(firstName)},
+           LastName{move(lastName)},
+           Gender{move(gender)},
+           DateOfBirth(birthDay,birthMonth,birthYear),
+           Nationality{move(nationality)},
+           IdentityNumber{move(identityNumber)},
+           MilitaryService{militaryService},
+           WorkingStatus{workingStatus}{
+    /*
     this->FirstName = move(firstName);
     this->LastName = move(lastName);
     this->Gender = move(gender);
@@ -28,20 +41,21 @@ User::User(string firstName,
     this->IdentityNumber = move(identityNumber);
     this->MilitaryService = militaryService;
     this->WorkingStatus = workingStatus;
+     */
 
     cout << "Parameterized Constructor Called." << endl;
 }
 
-
-void User::displayUserInformation() {
+void User::displayUserInformation(){
 
     cout << "Your Personal Informations:" << endl;
 
     cout << "First Name: " << FirstName << "\n"
          << "Last Name: " << LastName << "\n"
          << "Gender: " << Gender << "\n"
-         << "Date of Birth: " << DateOfBirth << "\n"
-         << "Nationality: " << Nationality << "\n"
+         << "Date of Birth:";
+    DateOfBirth.displayDate();
+    cout << "Nationality: " << Nationality << "\n"
          << "Identity Number: " << IdentityNumber << "\n"
          << "Military Service: " << (MilitaryService ? "Yes" : "No") << "\n"
          << "Working Status: " << (WorkingStatus ? "Yes" : "No") << endl;

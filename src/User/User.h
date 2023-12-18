@@ -7,6 +7,7 @@
 
 #include <string>
 #include <vector>
+#include "../Formats/Date.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ private:
     string FirstName;
     string LastName;
     string Gender;
-    string DateOfBirth; //Date formatı oluşturulacak başka bir classla.
+    Date DateOfBirth; //Date formatı association yapıldı(formats/date).
     string Nationality;
     string IdentityNumber; //Kontrol eklenicek tr için
     bool MilitaryService{};
@@ -38,7 +39,9 @@ public:
             string firstName,
             string lastName,
             string gender,
-            string dateOfBirth,
+            int birthDay,
+            int birthMonth,
+            int birthYear,
             string nationality,
             string identityNumber,
             bool militaryService,
@@ -56,6 +59,7 @@ public:
 
     //Display Username
     void displayUserName();
+
 
     /*
     //Hold User's id
