@@ -16,8 +16,8 @@ add_executable(Work_Compliance_Analysis_System
         src/User/ExpertiseAreas.h
         src/User/Hobies.cpp
         src/User/Hobies.h
-        src/User/LanguageSkills.cpp
-        src/User/LanguageSkills.h
+        src/User/ForeignLanguage.cpp
+        src/User/ForeignLanguage.h
         src/User/PersonalDocuments.cpp
         src/User/PersonalDocuments.h
         src/User/PersonalInformation.cpp
@@ -32,7 +32,7 @@ add_executable(Work_Compliance_Analysis_System
         src/User/SocialSkills.h
         src/User/WorkConditions.cpp
         src/User/WorkConditions.h
-        src/User/WorkExperiences.cpp
-        src/User/WorkExperiences.h
+        src/User/WorkExperience.cpp
+        src/User/WorkExperience.h
         main.cpp
         README.md)
