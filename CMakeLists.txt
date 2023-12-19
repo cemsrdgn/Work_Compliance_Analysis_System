@@ -10,8 +10,8 @@ add_executable(Work_Compliance_Analysis_System
         src/User/CommunicationInformation.h
         src/User/EducationInformation.cpp
         src/User/EducationInformation.h
-        src/User/ExamsInformations.cpp
-        src/User/ExamsInformations.h
+        src/User/ExamInformation.cpp
+        src/User/ExamInformation.h
         src/User/ExpertiseAreas.cpp
         src/User/ExpertiseAreas.h
         src/User/Hobies.cpp
