@@ -4,7 +4,7 @@
 
 #ifndef WORK_COMPLIANCE_ANALYSIS_SYSTEM_EXAMINFORMATION_H
 #define WORK_COMPLIANCE_ANALYSIS_SYSTEM_EXAMINFORMATION_H
-
+//
 #include <string>
 #include <vector>
 #include <iostream>
