@@ -2,7 +2,7 @@
 // Created by cemsr on 16.12.2023.
 //
 
-#include "User.h"
+#include "Candidate/User.h"
 #include <string>
 #include <iostream>
 #include <utility>
@@ -13,7 +13,8 @@ User::User(){
     cout << "Default Constructor Called." << endl;
 }
 
-User::User(string firstName,
+User::User(int id,
+           string firstName,
            string lastName,
            string gender,
            int birthDay,
@@ -24,6 +25,7 @@ User::User(string firstName,
            bool militaryService,
            bool workingStatus)
            :
+           ID{id},
            FirstName{move(firstName)},
            LastName{move(lastName)},
            Gender{move(gender)},
@@ -31,26 +33,21 @@ User::User(string firstName,
            Nationality{move(nationality)},
            IdentityNumber{move(identityNumber)},
            MilitaryService{militaryService},
-           WorkingStatus{workingStatus}{
-    /*
-    this->FirstName = move(firstName);
-    this->LastName = move(lastName);
-    this->Gender = move(gender);
-    this->DateOfBirth = move(dateOfBirth);
-    this->Nationality = move(nationality);
-    this->IdentityNumber = move(identityNumber);
-    this->MilitaryService = militaryService;
-    this->WorkingStatus = workingStatus;
-     */
+           WorkingStatus{workingStatus},
+           Password(" "){
 
     cout << "Parameterized Constructor Called." << endl;
 }
 
-void User::displayUserInformation(){
+vector<User> User::users;
+int User::nextId = 1;
+
+void User::displayUserInformation() const{
 
     cout << "Your Personal Informations:" << endl;
 
-    cout << "First Name: " << FirstName << "\n"
+    cout << "ID: " << ID << "\n"
+         << "First Name: " << FirstName << "\n"
          << "Last Name: " << LastName << "\n"
          << "Gender: " << Gender << "\n"
          << "Date of Birth:";
@@ -76,8 +73,33 @@ void User::displayUserName(){
     cout << "Your username:" << userName << endl;
 }
 
+void User::createPassword() {
+
+    string passwordInFunction;
+
+    cout << "Lütfen 4-10 sayıdan oluşucak şifrenizi giriniz: ";
+    cin >> passwordInFunction;
+    setPassword(passwordInFunction);
+}
+
+void User::displayUserPassword() {
+
+    cout << "Your Password:" << Password << endl;
+}
 
 //Destructor
 User::~User(){
     cout << "Destructor Called." << endl;
+}
+
+void User::displayUsers() {
+    cout << "Users in the database:" << endl;
+    for (const auto& user : users) {
+        user.displayUserInformation();
+        cout << "-------------------------" << endl;
+    }
+}
+
+void User::setPassword(const string &password) {
+    Password = password;
 }

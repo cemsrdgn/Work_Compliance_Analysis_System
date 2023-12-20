@@ -24,7 +24,6 @@ int getUserInputWithControl() {
     return input;
 }
 
-
 //Welcome screen to distinguish between company and user login
 int WelcomeScreen(){
     int numberOfOperation;
@@ -33,8 +32,8 @@ int WelcomeScreen(){
 
     while (true) {
 
-        cout << "1-User Options \n"
-             << "2-Company Options \n"
+        cout << "1-Candidate (Are you looking for a job?) \n"
+             << "2-Company (Will you post an Advertisement?) \n"
              << "3-Exit \n"
              << ">";
 
@@ -54,14 +53,14 @@ int UserLoginAndRegisterMenu() {
 
     int numberOfOperation;
 
-    cout << "---Work Compliance Analysis System--- \n"
+    cout << "----------------------Work Compliance Analysis System----------------------\n"
          << "Please enter the number of the operation you would like to perform: " << endl;
 
     while (true) {
 
         cout << "1-Login as User \n"
              << "2-Register as User \n"
-             << "3-Exit \n"
+             << "3-Exit to welcome screen\n"
              << ">";
 
         numberOfOperation = getUserInputWithControl();
@@ -110,15 +109,17 @@ int UserMainMenu() {
 
     while (true) {
 
-        cout << "1-Display my profile information \n"
-             << "2-Update my profile information\n"
-             << "3-Areas to add to WCAS CV\n"
-             << "4-Exit to welcome screen \n"
+        cout << "1-Adverts that might suit you \n"
+             << "2-Display all adverts\n"
+             << "3-My Profile \n"
+             << "4-My CV\n"
+             << "5-My Rank and Applied Ads\n"
+             << "6-Exit to welcome screen \n"
              << ">";
 
         numberOfOperation = getUserInputWithControl();
 
-        if (numberOfOperation == 1 || numberOfOperation == 2 || numberOfOperation == 3 || numberOfOperation == 4){
+        if (numberOfOperation >= 1 && numberOfOperation <= 6){
             break;
         } else {
             cout << "You entered a invalid number. Please try again!" << endl;
@@ -129,7 +130,7 @@ int UserMainMenu() {
 
 //----------------------------------------------------------------------------------------------------------------------
 //User's other classes(informations) which wants to add
-int UserCVAreas(){
+int UserMyCV(){
 
     int numberOfOperation;
 
