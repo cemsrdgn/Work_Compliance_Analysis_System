@@ -23,13 +23,19 @@ private:
     string CompanyTaxNumber;
     string CompanyTaxOfficeCity;
 
-};
 
 public:
 
     //Default Constructor
-    Company
-
+    CompanyInformation(string companyname, string number, string email, string city,string taxnumber, string taxoffficecity);
+    string getCompanyName();
+    string getCompanyPhoneNumber();
+    string getCompanyEmail();
+    string getCompanyCity();
+    string getCompanyTaxNumber();
+    string getCompanyTaxOfficeCity();
+    void createCompanyUserName();
+};
 
 
 #endif //WORK_COMPLIANCE_ANALYSIS_SYSTEM_COMPANYINFORMATION_H
