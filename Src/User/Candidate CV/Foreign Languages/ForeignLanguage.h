@@ -9,6 +9,7 @@
 
 #include <string>
 #include <vector>
+#include "Candidate/User.h"
 using namespace std;
 
 struct Language{
@@ -19,19 +20,19 @@ struct Language{
     string Speaking;
 };
 
-class ForeignLanguage {
+class ForeignLanguage : public User{
 private:
     Language language;
     vector<ForeignLanguage> lan;
 public:
-    ForeignLanguage(Language language1);
+    ForeignLanguage(int id,Language language1);
     string getLanguageName();
     string getWriting();
     string getReading();
     string getListening();
     string getSpeaking();
-    void setLanguage(Language l);
-    void display();
+    void setLanguage(int id,Language l);
+    void display() override;
 
 };
 

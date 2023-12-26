@@ -8,20 +8,21 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include "Candidate/User.h"
 
 using namespace std;
 
-class ExamInformation {
+class ExamInformation : public User {
 private:
     vector<ExamInformation>graduates;
     string ExamRank;
     string ExamPoint;
 public:
 
-    ExamInformation(string examrank,string exampoint);
-    ExamInformation(string exampoint);
-    void addExamRating(string examrank,string exampoint);
-    void addExamRating(string point);
+    ExamInformation(int id,string examrank,string exampoint);
+    ExamInformation(int id,string exampoint);
+    void addExamRating(int id,string examrank,string exampoint);
+    void addExamRating(int id,string point);
     string getExamRank();
     string getExamPoint();
     void displayGraduate();

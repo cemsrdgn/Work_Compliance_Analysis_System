@@ -16,7 +16,6 @@ class User {
 
 private:
 
-    int ID; //Database de oluşan her yeni kullanıcı için 1 artıyor
     string userName; //Biz kendimiz oluşturuyoruz.
     string Password; //Kayıt işleminin sonunda kullanıcı şifresini oluşturuyor.
 
@@ -29,6 +28,8 @@ private:
     bool MilitaryService;
     bool WorkingStatus;
 
+protected:
+    int ID; //Database de oluşan her yeni kullanıcı için 1 artıyor
 
 public:
 
@@ -37,6 +38,9 @@ public:
 
     //Default Constructor
     User();
+
+    //One Parameter Constructor
+    User(int id);
 
     //Parameterized Constructor
     User(
@@ -81,6 +85,9 @@ public:
 
 
     static int nextId;
+    int getID();
+    virtual void display();
+
 };
 
 

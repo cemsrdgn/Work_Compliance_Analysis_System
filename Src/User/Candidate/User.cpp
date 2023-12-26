@@ -13,6 +13,10 @@ User::User(){
     cout << "Default Constructor Called." << endl;
 }
 
+User::User(int id) {
+    this->ID=id;
+}
+
 User::User(int id,
            string firstName,
            string lastName,
@@ -103,3 +107,10 @@ void User::displayUsers() {
 void User::setPassword(const string &password) {
     Password = password;
 }
+int User::getID(){
+    return this->ID;
+}
+void User::display() {
+    cout << "hi" << endl;
+}
+

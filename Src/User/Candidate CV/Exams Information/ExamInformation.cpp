@@ -1,7 +1,3 @@
-//
-// Created by cemsr on 15.12.2023.
-//
-
 #include "ExamInformation.h"
 #include <string>
 #include <vector>
@@ -9,27 +5,30 @@
 
 using namespace std;
 
-ExamInformation::ExamInformation(string rank,string point)
+
+ExamInformation::ExamInformation(int ıd,string rank,string point)
 {
+    this->ID=ıd;
     this->ExamRank=rank;
     this->ExamPoint=point;
 }
-ExamInformation::ExamInformation(string point)
+ExamInformation::ExamInformation(int ıd,string point)
 {
+    this->ID=ıd;
     this->ExamPoint=point;
 }
-void ExamInformation:: addExamRating(string examrank,string exampoint){
+void ExamInformation:: addExamRating(int ıd,string examrank,string exampoint){
     cout << "enter exam point" << endl;
     cin >> exampoint;
     cout << "enter exam rank" << endl;
     cin >> examrank;
-    ExamInformation newgradute(examrank,exampoint);
+    ExamInformation newgradute(ıd,examrank,exampoint);
     graduates.push_back(newgradute);
 }
-void ExamInformation::addExamRating(string exampoint) {
+void ExamInformation::addExamRating(int ıd,string exampoint) {
     cout << "enter exam point" << endl;
     cin >> exampoint;
-    ExamInformation newgradute(exampoint);
+    ExamInformation newgradute(ıd,exampoint);
     graduates.push_back(newgradute);
 }
 
@@ -54,6 +53,7 @@ void ExamInformation::displayYksGraduate(){
 void ExamInformation::selectExam(){
     string examrank,exampoint;
     int choice,ch;
+    int id;
     bool exitMenu=false;
     while (!exitMenu) {
         cout << "WELCOME TO EXAM INFORMATION SYSTEM" << endl;
@@ -77,31 +77,31 @@ void ExamInformation::selectExam(){
                 cin.ignore();
 
                 if (ch == 1) {
-                    addExamRating(examrank, exampoint);
+                    addExamRating(id,examrank, exampoint);
                     displayYksGraduate();
                 }
                 else if (ch == 2) {
-                    addExamRating(exampoint);
+                    addExamRating(id,exampoint);
                     cout << "KPSS   ";
                     displayGraduate();
                 }
                 else if (ch == 3) {
-                    addExamRating(exampoint);
+                    addExamRating(id,exampoint);
                     cout << "ALES   ";
                     displayGraduate();
                 }
                 else if (ch == 4) {
-                    addExamRating(exampoint);
+                    addExamRating(id,exampoint);
                     cout << "TUS    ";
                     displayGraduate();
                 }
                 else if (ch == 5) {
-                    addExamRating(exampoint);
+                    addExamRating(id,exampoint);
                     cout << "YDS    ";
                     displayGraduate();
                 }
                 else if (ch == 6) {
-                    addExamRating(exampoint);
+                    addExamRating(id,exampoint);
                     cout << "YÖK DİL    ";
                     displayGraduate();
                 }
@@ -123,12 +123,12 @@ void ExamInformation::selectExam(){
                 cin.ignore();
                 cin >> ch;
                 if (ch == 1) {
-                    addExamRating(exampoint);
+                    addExamRating(id,exampoint);
                     cout << "IELTS    ";
                     displayGraduate();
                 }
                 else if (ch == 2) {
-                    addExamRating(exampoint);
+                    addExamRating(id,exampoint);
                     cout << "TOEFL    ";
                     displayGraduate();
                 }

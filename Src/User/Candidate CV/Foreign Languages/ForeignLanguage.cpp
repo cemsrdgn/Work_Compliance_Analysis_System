@@ -5,12 +5,13 @@
 #include "ForeignLanguage.h"
 #include <iostream>
 #include <string>
-#include <vector>
+//#include <vector>
 
 using namespace std;
 
-ForeignLanguage::ForeignLanguage(Language language1)
+ForeignLanguage::ForeignLanguage(int id,Language language1)
 {
+    this->ID=id;
     this->language=language1;
 }
 
@@ -30,21 +31,17 @@ string ForeignLanguage::getSpeaking(){
     return this->language.Speaking;
 }
 
-void ForeignLanguage::setLanguage(Language l) {
-    ForeignLanguage newmember(l);
+void ForeignLanguage::setLanguage(int id,Language l) {
+    ForeignLanguage newmember(id,l);
     lan.push_back(newmember);
-    cout << language.LanguageName << " Writing level "
-         << language.Writing << " Reading level " << language.Reading
-         << " Listening level " << language.Listening << " Speaking level "
-         << language.Speaking << endl;
 }
 void ForeignLanguage::display() {
     cout << "Graduates " << endl;
     for (size_t i = 0; i < lan.size(); i++) {
-        cout << i + 1 << " Language " << lan[i].getLanguageName()
-             << " Writing Level " << lan[i].getWriting()
-             << " Reading level " << lan[i].getReading()
-             << " Listening level " << lan[i].getListening()
-             << " Speaking level " << lan[i].getSpeaking();
+        cout << i + 1 << " Language " << lan[i].getLanguageName() << endl;
+        cout << " Writing Level " << lan[i].getWriting() << endl;
+        cout << " Reading level " << lan[i].getReading() << endl;
+        cout << " Listening level " << lan[i].getListening() << endl;
+        cout << " Speaking level " << lan[i].getSpeaking() << endl;
     }
 }

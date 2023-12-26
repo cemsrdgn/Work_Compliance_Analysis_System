@@ -5,10 +5,10 @@
 #include "WorkExperience.h"
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-WorkExperience::WorkExperience(Experience experience1){
+WorkExperience::WorkExperience(int id,Experience experience1){
+    this->ID=id;
     this->experience=experience1;
 }
 
@@ -38,8 +38,8 @@ int WorkExperience::CalculateWorkTime(int s1, int s2) {
     s2=this->experience.FinishDate;
     return s2-s1;
 }
-void WorkExperience::addExperience(Experience experience1) {
-    WorkExperience newwork(experience1);
+void WorkExperience::addExperience(int id,Experience experience1) {
+    WorkExperience newwork(id,experience1);
     exper.push_back(newwork);
 }
 void WorkExperience::display() {
@@ -51,5 +51,6 @@ void WorkExperience::display() {
         cout  << " City " << exper[i].getCity() << endl;
         cout  << " Work Area " << exper[i].getCompanyWorkingArea() << endl;
         cout  << " Work time " << exper[i].CalculateWorkTime(exper[i].getStartDate(),exper[i].getFinishDate()) << endl;
+
     }
 }

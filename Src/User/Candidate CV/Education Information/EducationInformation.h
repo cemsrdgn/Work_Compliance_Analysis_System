@@ -7,6 +7,8 @@
 
 #include <string>
 #include <vector>
+#include "Candidate/User.h"
+
 using namespace std;
 
 struct University{
@@ -22,13 +24,15 @@ struct University{
     float GPA;
 };
 
-class EducationInformation {
+class EducationInformation:public User{
 private:
     string HighSchool;
     University uni;
     vector<EducationInformation> education;
 public:
-    EducationInformation(string highschool,University university);
+
+    EducationInformation(int id, string highschool, University university);
+    EducationInformation();
     string getHighSchool();
     string getUniversityName();
     string getFaculty();
@@ -41,7 +45,8 @@ public:
     string getDoubleMajor();
     string getMinor();
     float getGPA();
-    void addEducationInformation(string school,University univ);
-    void display();
+    void addEducationInformation(int id,string school,University univ);
+    void display() override;
 };
+
 #endif //WORK_COMPLIANCE_ANALYSIS_SYSTEM_EDUCATIONINFORMATION_H

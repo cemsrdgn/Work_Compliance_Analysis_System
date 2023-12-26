@@ -7,7 +7,7 @@
 
 #include <string>
 #include <vector>
-
+#include "Candidate/User.h"
 using namespace std;
 
 struct Experience{
@@ -20,12 +20,12 @@ struct Experience{
     int FinishDate;
 };
 
-class WorkExperience {
+class WorkExperience :public User{
 private:
     Experience experience;
     vector<WorkExperience>exper;
 public:
-    WorkExperience(Experience experience1);
+    WorkExperience(int id,Experience experience1);
     string getCompanyName();
     string getPosition();
     string getWorkType();
@@ -34,8 +34,9 @@ public:
     int getStartDate();
     int getFinishDate();
     int CalculateWorkTime(int s1,int s2);
-    void addExperience(Experience experience1);
-    void display();
+    void addExperience(int id,Experience experience1);
+    void display() override;
 };
+
 
 #endif //WORK_COMPLIANCE_ANALYSIS_SYSTEM_WORKEXPERIENCE_H
