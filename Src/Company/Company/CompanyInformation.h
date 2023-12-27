@@ -12,7 +12,6 @@ class CompanyInformation {
 
 private:
 
-    int CompanyId;
     string CompanyUserName; //Biz oluşturacağız
     string CompanyPassword; //Register işleminden sonra şifre oluşturulacak
 
@@ -23,6 +22,8 @@ private:
     string CompanyTaxNumber;
     string CompanyTaxOfficeCity;
 
+protected:
+    int CompanyId;
 
 public:
 
