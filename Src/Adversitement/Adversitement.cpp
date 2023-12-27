@@ -1,7 +1,3 @@
-//
-// Created by USER on 21.12.2023.
-//
-
 #include "Adversitement.h"
 #include <string>
 #include <vector>
@@ -613,4 +609,3 @@ void Adversitement::display() {
         cout << " Military Service Status" << getMilitaryService() << endl;
     }
 }
-
