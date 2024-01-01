@@ -41,7 +41,7 @@ public:
 
     MenuMethods menuMethods; //Menu Method içinde bulunan fonksiyonu kullanmak istiyoruz
 
-    //Bizim kendi databasemiz. Tüm userları tutuyoruz.
+    //Bizim kendi databasemiz. Tüm userları tutuyoruz
     static vector<User> users;
 
     //Default Constructor
