@@ -24,3 +24,14 @@ void Date::displayDate() const{
 
     cout << day <<"/"<<month<<"/"<<year<<endl;
 }
+
+void Date::setDay(int day) {Date::day = day;}
+void Date::setMonth(int month) {Date::month = month;}
+void Date::setYear(int year) {Date::year = year;}
+
+void Date::updateDate(int bday,int bmonth,int byear) {
+
+    setDay(bday);
+    setMonth(bmonth);
+    setYear(byear);
+}

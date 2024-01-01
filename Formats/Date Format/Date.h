@@ -24,7 +24,14 @@ public:
     //Displays date
     void displayDate() const;
 
-};
+    //Setters
+    void setDay(int day);
+    void setMonth(int month);
+    void setYear(int year);
 
+    //Updates date(sets new values)
+    void updateDate(int bday,int bmonth,int byear);
+
+};
 
 #endif //WORK_COMPLIANCE_ANALYSIS_SYSTEM_DATE_H
