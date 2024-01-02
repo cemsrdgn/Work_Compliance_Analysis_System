@@ -9,9 +9,7 @@
 
 using namespace std;
 
-Company::Company() {
-    cout << "default company constructor called "<< endl;
-}
+Company::Company() {}
 
 Company::Company(int companyId,string companyName, string number, string email, string city, string taxNumber, string taxOfficeCity){
     this->CompanyId=companyId;
@@ -182,6 +180,10 @@ void Company::setCompanyTaxNumber(const string &companyTaxNumber) {
 
 void Company::setCompanyTaxOfficeCity(const string &companyTaxOfficeCity) {
     CompanyTaxOfficeCity = companyTaxOfficeCity;
+}
+
+int Company::getCompanyId(){
+    return CompanyId;
 }
 
 

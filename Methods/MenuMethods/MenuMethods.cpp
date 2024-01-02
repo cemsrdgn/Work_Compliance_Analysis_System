@@ -88,7 +88,7 @@ int MenuMethods::CandidateMainMenu() {
              << "2-Display all adverts\n"
              << "3-My Profile \n"
              << "4-My CV\n"
-             << "5-My Rank and Applied Ads\n"
+             << "5-My Rank\n"
              << "6-Exit to welcome screen \n"
              << ">";
 
@@ -247,14 +247,12 @@ int MenuMethods::CompanyAd() {
 
         cout << "1-Display My All Advertisements\n"
              << "2-Add New Advertisement\n"
-             << "3-Update my advertisements\n"
-             << "4-Remove my advertisements\n"
-             << "5-Back to Company Main Menu\n"
+             << "3-Back to Company Main Menu\n"
              << ">";
 
         numberOfOperation = getUserInputWithControl();
 
-        if (numberOfOperation >= 1 && numberOfOperation <= 5){
+        if (numberOfOperation >= 1 && numberOfOperation <= 3){
             break;
         } else {
             cout << "You entered a invalid number. Please try again!" << endl;

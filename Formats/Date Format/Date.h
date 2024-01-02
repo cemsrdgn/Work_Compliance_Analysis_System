@@ -32,6 +32,8 @@ public:
     //Updates date(sets new values)
     void updateDate(int bday,int bmonth,int byear);
 
+    int calculateTime(int sday, int smonth, int syear);
+
 };
 
 #endif //WORK_COMPLIANCE_ANALYSIS_SYSTEM_DATE_H

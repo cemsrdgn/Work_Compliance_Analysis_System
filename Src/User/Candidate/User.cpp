@@ -9,9 +9,7 @@
 
 using namespace std;
 //default
-User::User(){
-    cout << "Default Constructor Called." << endl;
-}
+User::User(){}
 
 User::User(int id) {
     this->ID=id;
@@ -42,10 +40,8 @@ User::User(int id,
            DisabilitySituation{disabilitySituation},
            RelativeOfMartyr{relativeOfMartyr},
            WorkingStatus{workingStatus},
-           Password(" "){
+           Password(" "){}
 
-    cout << "Parameterized Constructor Called." << endl;
-}
 
 vector<User> User::users;
 int User::nextId = 1;
@@ -58,6 +54,7 @@ void User::displayCandidateInformation() const {
          << "Gender: " << Gender << "\n"
          << "Date of Birth:";
     DateOfBirth.displayDate();
+
     cout << "Nationality: " << Nationality << "\n"
          << "Identity Number: " << IdentityNumber << "\n"
          << "Disability Situation: " << (DisabilitySituation ? "Yes" : "No") << "\n"
@@ -187,9 +184,7 @@ void User::updateCandidateProfileInformation() {
 
 
 //Destructor
-User::~User(){
-    cout << "Destructor Called." << endl;
-}
+User::~User()= default;
 
 void User::setUserName(const string &userName) {User::UserName = userName;}
 void User::setPassword(const string &password) {Password = password;}

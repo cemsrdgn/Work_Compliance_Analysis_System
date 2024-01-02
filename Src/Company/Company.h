@@ -32,6 +32,8 @@ public:
 
     static int nextCompanyId;
 
+
+
     //Default Constructor
     Company();
 
@@ -55,6 +57,8 @@ public:
     string getCompanyTaxNumber();
     string getCompanyTaxOfficeCity();
     string getCompanyPassword();
+
+    int getCompanyId();
 
     void setCompanyUserName(const string &companyUserName);
     void setCompanyPassword(const string &companyPassword);

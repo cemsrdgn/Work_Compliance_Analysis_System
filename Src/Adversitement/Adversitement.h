@@ -10,18 +10,9 @@
 
 using namespace std;
 
-struct Adversitements {
-    int NumberofQuotas;
-    string AdTitle;
-    string CompanyDescription;
-    int Salary;
-    string City;
-    string ApplicationDeadline;
-};
 
-class Adversitement {
+class Adversitement{
 private:
-
     //Ads information
     string AdTitle;
     string CompanyDescription;
@@ -31,7 +22,6 @@ private:
 
     //Ads attributes
     int AdId;
-    Adversitements adversitements;
     string Sector;
     string Position;
     string WorkPreference;
@@ -41,6 +31,9 @@ private:
     string EducationLevel;
     string Language;
     string MilitaryService;
+
+    int CompanyId;
+
 
 public:
     //Default Constructor
@@ -53,6 +46,7 @@ public:
                   string city,
                   string applicationDeadline,
                   int adId,
+                  int companyId ,
                   string sector,
                   string position,
                   string workPreference,
@@ -73,28 +67,14 @@ public:
     //Destructor
     ~Adversitement();
 
-    void AddAdversitement(Adversitements add, string sector, string position, string workpreference, string worktype,
-                          string experience, string positionlevel, string educationlevel, string language,
-                          string military);
-
     void display() const;
-
-    void printMenu();
 
     static void displayAllAdversitements();
 
+    static void displayCompanyAdvertisements(int companyId);
 
-    int getNumberofQuotas();
+    int getCompanyId();
 
-    string getAdTitle();
-
-    string getCompanyDescription();
-
-    int getSalary();
-
-    string getCity();
-
-    string getApplicationDeadline();
 
     string getSector();
 
@@ -113,6 +93,8 @@ public:
     string getLanguage();
 
     string getMilitaryService();
+
+
 };
 
 

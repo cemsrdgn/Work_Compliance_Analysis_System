@@ -9,6 +9,7 @@
 #include "Formats/Date Format/Date.cpp"
 #include "Methods/MenuMethods/MenuMethods.cpp"
 #include "Methods/GetInformationMethods//GetInfo.cpp"
+#include "Candidate CV/Hobies/Hobie.h"
 
 
 #include <iostream>
@@ -20,71 +21,33 @@ int main() {
 
     MenuMethods menuMethods;
 
-    User dummyUser1(User::nextId++, "Dummy1", "User1", "Male", 1, 1, 1990, "DummyCountry", "123456789", false, true,
-                    false, false);
-    User::users.push_back(dummyUser1);
-    User dummyUser2(User::nextId++, "Dummy2", "User2", "Female", 2, 2, 1995, "DummyCountry", "987654321", true, false,
-                    true, false);
-    User::users.push_back(dummyUser2);
+    User AliOzn(User::nextId++, "Ali", "Ozen", "Male", 21, 06, 2000, "Turkish", "21219841060", true, false,false, true);
+    AliOzn.createCandidateUserName(); //Login için AliOzn kullanıcısı username: Ali.Ozen
+    AliOzn.setPassword("123456"); //Login için AliOzn kullanıcısı password: 123456
+    User::users.push_back(AliOzn);
 
-    Adversitement advert2("Ad Title 2", "Company Description 2", 60000, "City 2", "2023-01-20",
-                          Adversitement::nextAdId++, "Finance and Banking", "Accounting staff", "At the workplace",
-                          "Periodic / Project based", "2-5 years", "Middle manager", "Master - Graduate", "German",
-                          "Not Done (Postponed)");
+    User MltmKlbk(User::nextId++, "Meltem", "Kelebek", "Female", 17, 05, 1989, "Canadian", "31269966233", false, true,false, true);
+    MltmKlbk.createCandidateUserName(); //Login için MltmKlbk kullanıcısı username: Meltem.Kelebek
+    MltmKlbk.setPassword("987654"); //Login için MltmKlbk kullanıcısı password: 987654
+    User::users.push_back(MltmKlbk);
+
+    Company RecordCompany(Company::nextCompanyId++, "RecordSoftware", "3123226895", "rcrdsftwr@gmail.com", "Berlin","6547983423", "Frankfurt");
+    RecordCompany.createCompanyUserName();
+    RecordCompany.setCompanyPassword("987654");
+    Company::companies.push_back(RecordCompany);
+
+    Company CoreCompany(Company::nextCompanyId++, "CoreBank", "2123654482", "core@gmail.com", "Istanbul","984565123485", "Ankara");
+    CoreCompany.createCompanyUserName();
+    CoreCompany.setCompanyPassword("123456");
+    Company::companies.push_back(CoreCompany);
+
+
+    Adversitement advert2("Ad Title 2", "Company Description 2", 60000, "Istanbul", "2023-01-20",Adversitement::nextAdId++, CoreCompany.getCompanyId(), "Finance and Banking","Accounting staff", "At the workplace","Periodic / Project based", "2-5 years", "Middle manager", "Master - Graduate", "German","Not Done (Postponed)");
     Adversitement::adversitement.push_back(advert2);
 
-    Adversitement advert1("Ad Title 1", "Company Description 1", 50000, "City 1", "2023-01-15",
-                          Adversitement::nextAdId++, "Technology and Software", "Software specialist", "Remote/Remote",
-                          "Permanent / Full time", "0-2 years", "Beginner", "University graduate", "English",
-                          "Done, Exempt");
+    Adversitement advert1("Ad Title 1", "Company Description 1", 50000, "Berlin", "2023-01-15",Adversitement::nextAdId++, RecordCompany.getCompanyId(), "Technology and Software","Software specialist", "Remote/Remote","Permanent / Full time", "0-2 years", "Beginner", "University graduate", "English","Done, Exempt");
     Adversitement::adversitement.push_back(advert1);
 
-/*
-    AdvertisementId = Adversitement::nextAdId;
-
-    getAdvertisementInfo(AdTitle,
-                         CompanyDescription,
-                         Salary,
-                         City,
-                         ApplicationDeadLine,
-                         AdSector,
-                         AdPosition,
-                         AdWorkPreference,
-                         AdWorkType,
-                         AdExperience,
-                         ADPositionLevel,
-                         AdEducationLevel,
-                         AdLanguage,
-                         AdMilitaryService);
-
-
-
-    newAdversitement = Adversitement(AdTitle,
-                                     CompanyDescription,
-                                     Salary,
-                                     City,
-                                     ApplicationDeadLine,
-                                     AdvertisementId,
-                                     AdSector,
-                                     AdPosition,
-                                     AdWorkPreference,
-                                     AdWorkType,
-                                     AdExperience,
-                                     ADPositionLevel,
-                                     AdEducationLevel,
-                                     AdLanguage,
-                                     AdMilitaryService);
-
-    Adversitement::adversitement.push_back(newAdversitement);
-
-
-    newAdversitement.displayAllAdversitements();
-*/
-
-
-
-    // Tüm kullanıcıları göster
-    User::displayAllCandidates();
 
     //User profile infoları için tanımlamalar
     string userFirstName, userLastName, userGender, userNationality, userIdentityNumber;
@@ -99,7 +62,6 @@ int main() {
     int AdvertisementId, NumberOfQuotas, Salary;
     string AdTitle, CompanyDescription, City, ApplicationDeadLine;
     string AdSector, AdPosition, AdWorkPreference, AdWorkType, AdExperience, ADPositionLevel, AdEducationLevel, AdLanguage, AdMilitaryService;
-
 
 
     //Back option for user's and company's login and register menu
@@ -118,14 +80,13 @@ int main() {
     int candidateMyProfileChoice, welcomeChoice, candidateMainMenuChoice, companyMainMenuChoice;
 
 
-    User loggedInUser;
     User newUser;
-
     Company newCompany;
-    Company loggedInCompany;
-
 
     Adversitement newAdversitement;
+
+    Hobie Hobies; string hobies;
+
 
     int userId;
 
@@ -140,18 +101,16 @@ int main() {
 
                         while (!hasCandidateMainMenuCalled) {
 
-                            cout << "User is not found.Please try again!" << endl;
-
                             cout << "Username:";
                             cin >> nameCheckUser;
                             cout << "Password:";
                             cin >> passwordCheckUser;
 
                             for (auto &user: User::users) {
-                                if (user.getFirstName() == nameCheckUser) {
-                                    if (user.getLastName() == passwordCheckUser) {
+                                if (user.getUserName() == nameCheckUser) {
+                                    if (user.getPassword() == passwordCheckUser) {
                                         cout << "Successful login. Redirecting to the main menu..." << endl;
-                                        loggedInUser = user;
+                                        newUser = user;
                                         hasCandidateMainMenuCalled = true;
                                         hasCandidateMainMenuBackCalled = true;
                                         break;
@@ -254,14 +213,31 @@ int main() {
                                         case 11: // Add Social Skills
                                             cout << "Add social skill to your cv:" << endl;
                                             break;
+
                                         case 12: // Add Hobbies
                                             cout << "Add Hobbies to your cv:" << endl;
+
+                                            cout << "Hobbies:";
+                                            cin >> hobies;
+                                            cin.ignore();
+                                            Hobies.add(newUser.getID(), hobies);
+                                            cout << "Adding Successful..." << endl;
+
+                                            Hobies.display();
+
+                                            cout << "1-Back to Candidate Main Menu\n>";
+                                            back = menuMethods.getUserInputWithControl();
+                                            if (back == 1) { continue; }
                                             break;
-                                        case 13: // Back to User Main Menu
+
+                                        case 13: // Back to Candidate Main Menu
                                             cout << "Returning to candidate main menu..." << endl;
                                             continue;
+
+                                        default:
+                                            cout << "\nInvalid choice. Please enter a valid option." << endl;
+                                            break;
                                     }
-                                    break;
 
                                 case 5: // 5-My Rank and Applied Ads
                                     cout << "My Rank and Applied Ads page is loading..." << endl;
@@ -312,7 +288,6 @@ int main() {
                         newUser.displayCandidateUserName();
                         newUser.displayCandidatePassword();
 
-                        loggedInUser = newUser;
 
                         hasCandidateMainMenuBackCalled = true;
 
@@ -410,6 +385,20 @@ int main() {
                                             break;
                                         case 12: // Add Hobbies
                                             cout << "Add Hobbies to your cv:" << endl;
+                                            cout << "Add Hobbies to your cv:" << endl;
+
+                                            cout << "Hobbies:";
+                                            cin >> hobies;
+                                            cin.ignore();
+                                            Hobies.add(newUser.getID(), hobies);
+                                            cout << "Adding Successful..." << endl;
+
+                                            Hobies.display();
+
+                                            cout << "1-Back to Candidate Main Menu\n>";
+                                            back = menuMethods.getUserInputWithControl();
+                                            if (back == 1) { continue; }
+
                                             break;
                                         case 13: // Back to User Main Menu
                                             cout << "Returning to candidate main menu..." << endl;
@@ -457,8 +446,6 @@ int main() {
 
                         while (!hasCompanyMainMenuCalled) {
 
-                            cout << "Company is not found.Please try again!" << endl;
-
                             cout << "Company Username:";
                             cin >> nameCheckCompany;
                             cout << "Password:";
@@ -468,8 +455,8 @@ int main() {
                                 if (company.getCompanyUserName() == nameCheckCompany) {
                                     if (company.getCompanyPassword() == passwordCheckCompany) {
                                         cout << "Successful login. Redirecting to the main menu..." << endl;
-                                        loggedInCompany = company;
-                                        hasCompanyMainMenuCalled     = true;
+                                        newCompany = company;
+                                        hasCompanyMainMenuCalled = true;
                                         hasCompanyMainMenuBackCalled = true;
                                         break;
                                     } else {
@@ -489,6 +476,7 @@ int main() {
                                 case 1: //Candidates Applied My Ads-------------------------------------------sonra
 
                                     cout << "Candidates Applied My Ads:" << endl;
+                                    cout << "No one applied your ads." << endl;
 
                                     cout << "1-Back to Company Main Menu\n>";
                                     back = menuMethods.getUserInputWithControl();
@@ -551,6 +539,11 @@ int main() {
                                         case 1: //Display my all adverts
                                             cout << "Display your ads page is loading..." << endl;
 
+                                            newAdversitement.displayCompanyAdvertisements(newCompany.getCompanyId());
+
+                                            cout << "------------------------------------------------------------"
+                                                 << endl;
+
                                             cout << "1-Back to Company Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
                                             if (back == 1) { continue; }
@@ -558,25 +551,48 @@ int main() {
                                         case 2: //Add adverts
                                             cout << "Add ads page is loading..." << endl;
 
+                                            AdvertisementId = Adversitement::nextAdId;
+
+                                            getAdvertisementInfo(AdTitle,
+                                                                 CompanyDescription,
+                                                                 Salary,
+                                                                 City,
+                                                                 ApplicationDeadLine,
+                                                                 AdSector,
+                                                                 AdPosition,
+                                                                 AdWorkPreference,
+                                                                 AdWorkType,
+                                                                 AdExperience,
+                                                                 ADPositionLevel,
+                                                                 AdEducationLevel,
+                                                                 AdLanguage,
+                                                                 AdMilitaryService);
+
+                                            newAdversitement = Adversitement(AdTitle,
+                                                                             CompanyDescription,
+                                                                             Salary,
+                                                                             City,
+                                                                             ApplicationDeadLine,
+                                                                             AdvertisementId,
+                                                                             newCompany.getCompanyId(),
+                                                                             AdSector,
+                                                                             AdPosition,
+                                                                             AdWorkPreference,
+                                                                             AdWorkType,
+                                                                             AdExperience,
+                                                                             ADPositionLevel,
+                                                                             AdEducationLevel,
+                                                                             AdLanguage,
+                                                                             AdMilitaryService);
+
+                                            Adversitement::adversitement.push_back(newAdversitement);
+                                            newAdversitement.display();
+
                                             cout << "1-Back to Company Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
                                             if (back == 1) { continue; }
 
-                                        case 3: //Update adverts
-                                            cout << "Update ads page is loading..." << endl;
-
-                                            cout << "1-Back to Company Main Menu\n>";
-                                            back = menuMethods.getUserInputWithControl();
-                                            if (back == 1) { continue; }
-
-                                        case 4: //Remove adverts
-                                            cout << "Remove your ads page is loading..." << endl;
-
-                                            cout << "1-Back to Company Main Menu\n>";
-                                            back = menuMethods.getUserInputWithControl();
-                                            if (back == 1) { continue; }
-
-                                        case 5: //Back to company main menu
+                                        case 3: //Back to company main menu
                                             cout << "Returning to company main menu..." << endl;
                                             continue;
 
@@ -632,7 +648,6 @@ int main() {
                         newCompany.displayCompanyUserName();
                         newCompany.displayCompanyPassword();
 
-                        loggedInCompany = newCompany;
 
                         cout << "--------------------------------------------------------------------" << endl;
 
@@ -706,6 +721,11 @@ int main() {
                                         case 1: //Display my all adverts
                                             cout << "Display your ads page is loading..." << endl;
 
+                                            newAdversitement.displayCompanyAdvertisements(newCompany.getCompanyId());
+
+                                            cout << "------------------------------------------------------------"
+                                                 << endl;
+
                                             cout << "1-Back to Company Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
                                             if (back == 1) { continue; }
@@ -736,6 +756,7 @@ int main() {
                                                                              City,
                                                                              ApplicationDeadLine,
                                                                              AdvertisementId,
+                                                                             newCompany.getCompanyId(),
                                                                              AdSector,
                                                                              AdPosition,
                                                                              AdWorkPreference,
@@ -747,18 +768,21 @@ int main() {
                                                                              AdMilitaryService);
 
                                             Adversitement::adversitement.push_back(newAdversitement);
-                                            newAdversitement.displayAllAdversitements();
+                                            newAdversitement.display();
 
                                             cout << "1-Back to Company Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
-                                            if (back == 1) {continue;}
+                                            if (back == 1) { continue; }
 
                                         case 3: //Update adverts
                                             cout << "Update ads page is loading..." << endl;
 
+                                            newAdversitement.displayCompanyAdvertisements(newCompany.getCompanyId());
+
+
                                             cout << "1-Back to Company Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
-                                            if (back == 1) {continue;}
+                                            if (back == 1) { continue; }
 
                                         case 4: //Remove adverts
                                             cout << "Remove your ads page is loading..." << endl;
@@ -790,7 +814,6 @@ int main() {
                             }
                         }
                         break;
-
 
 
                 }

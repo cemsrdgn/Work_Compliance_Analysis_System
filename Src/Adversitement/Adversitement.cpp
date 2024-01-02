@@ -6,9 +6,7 @@
 
 using namespace std;
 
-Adversitement::Adversitement() {
-    cout << "Default Advertisement Constructor Called" << endl;
-}
+Adversitement::Adversitement() {}
 
 Adversitement::Adversitement(
         string adTitle,
@@ -17,6 +15,7 @@ Adversitement::Adversitement(
         string city,
         string applicationDeadline,
         int adId,
+        int companyId,
         string sector,
         string position,
         string workPreference,
@@ -33,6 +32,7 @@ Adversitement::Adversitement(
     this->City=move(city);
     this->ApplicationDeadline=move(applicationDeadline);
     this->AdId = adId;
+    this->CompanyId=companyId;
     this->Sector = move(sector);
     this->Position = move(position);
     this->WorkPreference = move(workPreference);
@@ -42,8 +42,6 @@ Adversitement::Adversitement(
     this->EducationLevel = move(educationLevel);
     this->Language = move(language);
     this->MilitaryService = move(militaryService);
-
-    cout << "Default Parameterized Advertisement Constructor Called" << endl;
 }
 
 Adversitement::~Adversitement() {
@@ -53,38 +51,6 @@ Adversitement::~Adversitement() {
 vector<Adversitement>Adversitement::adversitement;
 int Adversitement::nextAdId = 1;
 
-
-int Adversitement::getNumberofQuotas() {
-    return this->adversitements.NumberofQuotas;
-}
-
-string Adversitement::getAdTitle() {
-    return this->adversitements.AdTitle;
-}
-
-string Adversitement::getCompanyDescription() {
-    return this->adversitements.CompanyDescription;
-}
-
-int Adversitement::getSalary() {
-    return this->adversitements.Salary;
-}
-
-string Adversitement::getCity() {
-    return this->adversitements.City;
-}
-
-string Adversitement::getApplicationDeadline() {
-    return this->adversitements.ApplicationDeadline;
-}
-
-/*
-void Adversitement::AddAdversitement (Adversitements add,string sector,string position,string workpreference,string worktype,
-                                      string experience,string positionlevel,string educationlevel,string language,string military){
-    Adversitement newAdversitement(add,sector, position, workpreference, worktype,experience, positionlevel,
-                                   educationlevel, language, military);
-    adversitement.push_back(newAdversitement);
-}*/
 
 string Adversitement::getPosition() {
     char choice;
@@ -559,53 +525,15 @@ string Adversitement::getMilitaryService() {
     return this->MilitaryService;
 }
 
-/*
-void Adversitement::printMenu(){
-    int ch;
-    cout << "Welcome to Adverts " << endl;
-    cout << "1-Show Adverts: " << endl;
-    cout << "2-Add Adverts:" << endl;
-    cout << "3-Exit..." << endl;
-    cin >> ch;
-    if(ch==1){
-        display();
-    }
-    if(ch==2){
-        cout << "Welcome to Add Advert " << endl;
-        cout << "Enter Number of Quotas: ";
-        cin >> adversitements.NumberofQuotas;
-        cin.ignore();
-        cout << "Enter Advert Title: ";
-        getline(cin,adversitements.AdTitle);
-        cout << "Emter Company Description: ";
-        getline(cin,adversitements.CompanyDescription);
-        cin.ignore();
-        cout << "Enter Salary Expectation: ";
-        cin >> adversitements.Salary;
-        cin.ignore();
-        cout << "City: ";
-        getline(cin,adversitements.City);
-        cout << "Enter ApplicationDeadline: ";
-        getline(cin,adversitements.ApplicationDeadline);
-        cout << getPosition() << endl;
-        cout << getSector() << endl;
-        cout << getWorkPreference() << endl;
-        cout << getWorkType() << endl;
-        cout << getExperience() << endl;
-        cout << getPositionLevel() << endl;
-        cout << getEducationLevel() << endl;
-        cout << getLanguage() << endl;
-        cout << getMilitaryService() << endl;
-    }
-}*/
-
 
 void Adversitement::display() const {
+
         cout << "Advertisement Information" << endl;
         cout << "-----------------------------------" << endl;
+
         cout << " " << AdId << ".Advertisement:" << endl;
         cout << " Advert Title: " << AdTitle << endl;
-        cout << " Company Description:" <<CompanyDescription << endl;
+        cout << " Company Description:" << CompanyDescription << endl;
         cout << " Salary: " << Salary << endl;
         cout << " City: " << City << endl;
         cout << " Application Deadline:" << ApplicationDeadline << endl;
@@ -618,9 +546,16 @@ void Adversitement::display() const {
         cout << " Education Level: " << EducationLevel << endl;
         cout << " Language: " << Language << endl;
         cout << " Military Service Status:" << MilitaryService << endl;
+
 }
 
-
+void Adversitement::displayCompanyAdvertisements(int companyId) {
+    for (auto& advert : adversitement) {
+        if (advert.getCompanyId() == companyId) {
+            advert.display();
+        }
+    }
+}
 
 
 void Adversitement::displayAllAdversitements(){
@@ -630,4 +565,8 @@ void Adversitement::displayAllAdversitements(){
         Adversitement.display();
         cout << "--------------------------------------" << endl;
     }
+}
+
+int Adversitement::getCompanyId(){
+    return CompanyId;
 }
