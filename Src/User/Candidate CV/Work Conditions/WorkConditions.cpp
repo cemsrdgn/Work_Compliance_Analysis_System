@@ -1,69 +1,49 @@
 //
 // Created by cemsr on 15.12.2023.
 //
-/*
+#include <iostream>
 #include <string>
 #include <vector>
-#include "Candidate/User.h"
 #include "WorkConditions.h"
 
-
-using namespace std;
-class WorkConditions : public User {
-private:
-    vector<WorkConditions> workconditions;
-    int salaryExcemptions;
-    string disaredPositionsTo;
-    string desiredCityToWork;
-    bool travelCapability;
-
-public:
-
-    WorkConditions();
+//Default Constructor
+WorkConditions::WorkConditions(){}
 
 
-    WorkConditions(int id,
-                   int salaryExcemptions,
-                   string disaredPositionsTo,
-                   string desiredCityToWork,
-                   bool travelCapability){
-        this->
+//Parameterized Constructor
+WorkConditions::WorkConditions(int id,
+                               int salaryException,
+                               string desiredPosition,
+                               string desiredCityToWork,
+                               bool travelCapability)
+{
+    this->SalaryException=salaryException;
+    this->DesiredPosition=move(desiredPosition);
+    this->DesiredCityToWork=move(desiredCityToWork);
+    this->TravelCapability=travelCapability;
+}
+
+
+void WorkConditions::add(int id, int salaryException, string desiredPosition, string desiredCityToWork,bool travelCapability){
+
+    WorkConditions newCond(id,salaryException,desiredCityToWork,desiredCityToWork,travelCapability);
+    workConditions.push_back(newCond);
+
+}
+
+void WorkConditions::display() {
+
+    for (auto & workCondition : workConditions) {
+        cout  << " Id:" << ID << endl;
+        cout  << " Salary Exception:" << workCondition.getSalaryException() << endl;
+        cout  << " Desired Position " << workCondition.getDesiredPosition() << endl;
+        cout  << " Desired City To Work " << workCondition.getDesiredCityToWork() << endl;
+        cout  << " Travel Capability " << workCondition.getTravelCapability() << endl;
     }
+}
 
 
-    void display() override;
-    void update();
-    void remove();
-    void add(int id, int salaryExcemptions, string disaredPositionsTo, string desiredCityToWork, bool travelCapability);
-
-    // Getter ve Setter metodları
-    const string &getDisaredPositionsTo() const;
-    void setDisaredPositionsTo(const string &disaredPositionsTo);
-
-    int getSalaryExcemptions() const;
-    void setSalaryExcemptions(int salaryExcemptions);
-
-    const string &getDesiredCityToWork() const;
-    void setDesiredCityToWork(const string &desiredCityToWork);
-
-    bool isTravelCapability() const;
-    void setTravelCapability(bool travelCapability);
-
-    // Diğer fonksiyonlar
-    const vector<WorkConditions> &getWorkconditions() const;
-
-    void getAdvertisementInfo(string& adTitle,
-                              string& companyDescription,
-                              int& salary,
-                              string& city,
-                              string& applicationDeadLine,
-                              string& sector,
-                              string& position,
-                              string& workPreference,
-                              string& workType,
-                              string& experience,
-                              string& positionLevel,
-                              string& educationLevel,
-                              string& language,
-                              string& militaryService);
-};*/
+int WorkConditions::getSalaryException() const {return this->SalaryException;}
+string WorkConditions::getDesiredPosition() const {return this->DesiredPosition;}
+string WorkConditions::getDesiredCityToWork()const {return this->DesiredCityToWork;}
+bool WorkConditions::getTravelCapability() const {return this->TravelCapability;}

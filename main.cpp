@@ -28,54 +28,106 @@ float AlgoPoint=0;
 using namespace std;
 
 int main() {
-    string school1;
-    float schoolRank;
-    University myUni;
-    bool Erasmus;
-    Language language;
-    float myRank=0;
-    Experience experience;
+
+    ///Creating Classes Instances
+
+    ///BaseClass
+    User newUser;
+    //User(Candidate) profile infoları için tanımlamalar
+    string userFirstName, userLastName, userGender, userNationality, userIdentityNumber;
+    bool userDisabilitySituation = false, userRelativeOfMarty = false;
+    bool userHasDoneMilitaryService = false, userWorkingStatus = false;
+    int userBirthDay, userBirthMonth, userBirthYear;
+
+    ///Subclasses
+    //Work Experience
     string name,description,startDate,endDate;
+    Experience experience;
+    User* user2 = new WorkExperience();
+    WorkExperience* WorkExper = dynamic_cast<WorkExperience*>(user2);
+
+    //Education Information
+    float schoolRank;
+    bool Erasmus;
+    University myUni;
+    string school1;
+    User* user = new EducationInformation();
+    EducationInformation* myEducation = dynamic_cast<EducationInformation*>(user);
+
+    //Foreign Language
+    Language language;
+    User* user1 = new ForeignLanguage();
+    ForeignLanguage* myLanguage = dynamic_cast<ForeignLanguage*>(user1);
+
+    //Exam Information
     float examranks,exampoints;
-    int certifcount=0;
-    string certif;
+    User* user3 = new ExamInformation();
+    ExamInformation* myExam = dynamic_cast<ExamInformation*>(user3);
+
+    //Social Skills
     int volcount = 0, clubcount = 0;
     string socialfactor, volunteerwork;
+    SocialFactors social(user->getID(),socialfactor,volunteerwork);
+
+    //Project
+    Project proje(name,description,startDate,endDate);
+    int projecount=0;
+
+    //References
+    Reference reference;
+
+    //Certificates
+    int certifcount=0;
+    string certif;
+    Certificates Cer;
+
+    //Communication Information
+    string email, phone, address;
+    CommunicationInformation commInfo;
+
+    //Hobies
+    string hobies;
+    Hobie Hobies;
+
+    //Work Conditions
+    int salaryException;
+    string desiredPosition,desiredCityToWork;
+    bool travelCapability;
+    WorkConditions workConditions;
+
+
+    ///Company Class
+    Company newCompany;
+    //Company profile infoları için tanımlamalar
+    string CompanyName, CompanyPhoneNumber, CompanyEmail, CompanyCity, CompanyTaxNumber, CompanyTaxOfficeCity;
+
+
+    ///Advertisement Class
+    Adversitement newAdversitement;
+    //Advertisement özellikleri için tanımlamalar:
+    int AdvertisementId, NumberOfQuotas, Salary;
+    string AdTitle, CompanyDescription, City, ApplicationDeadLine;
+    string AdSector, AdPosition, AdWorkPreference, AdWorkType, AdExperience, ADPositionLevel, AdEducationLevel,AdLanguage,
+    AdMilitaryService;
+
+    float myRank=0;
+
     int choice;
     int id;
     int ch;
     int year;
-    int projecount=0;
+
+    //For loop controls
     bool validChoice=false;
-    User* user = new EducationInformation();
-    EducationInformation* myEducation = dynamic_cast<EducationInformation*>(user);
-    User* user1 = new ForeignLanguage();
-    ForeignLanguage* myLanguage = dynamic_cast<ForeignLanguage*>(user1);
-
-    User* user2 = new WorkExperience();
-    WorkExperience* WorkExper = dynamic_cast<WorkExperience*>(user2);
-
-    Project proje(name,description,startDate,endDate);
-
-    User* user3 = new ExamInformation();
-    ExamInformation* myExam = dynamic_cast<ExamInformation*>(user3);
-    Certificates Cer;
-    SocialFactors social(user->getID(),socialfactor,volunteerwork);
     bool exitMenu;
-    CommunicationInformation commInfo;
-    string email, phone, address;
-    Reference reference;
+
     string namee;
     string position;
     string phoneNumber;
-    int salaryExcemptions;
-    string disaredPositionsTo;
-    string desiredCityToWork;
-    bool travelCapability;
-    //WorkConditions workConditions;
 
     MenuMethods menuMethods;
 
+    //Datas for Database-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     User AliOzn(User::nextId++, "Ali", "Ozen", "Male", 21, 06, 2000, "Turkish", "21219841060", true, false,false, true);
     AliOzn.createCandidateUserName(); //Login için AliOzn kullanıcısı username: Ali.Ozen
     AliOzn.setPassword("123456"); //Login için AliOzn kullanıcısı password: 123456
@@ -87,63 +139,41 @@ int main() {
     User::users.push_back(MltmKlbk);
 
     Company RecordCompany(Company::nextCompanyId++, "RecordSoftware", "3123226895", "rcrdsftwr@gmail.com", "Berlin","6547983423", "Frankfurt");
-    RecordCompany.createCompanyUserName();
-    RecordCompany.setCompanyPassword("987654");
+    RecordCompany.createCompanyUserName();   //Login için RecordCompany şirketi username: RecordSoftware.company
+    RecordCompany.setCompanyPassword("987654"); //Login için RecordCompany şirketi şifre: 987654
     Company::companies.push_back(RecordCompany);
 
     Company CoreCompany(Company::nextCompanyId++, "CoreBank", "2123654482", "core@gmail.com", "Istanbul","984565123485", "Ankara");
-    CoreCompany.createCompanyUserName();
-    CoreCompany.setCompanyPassword("123456");
+    CoreCompany.createCompanyUserName();   //Login için CoreBank şirketi username: CoreBank.company
+    CoreCompany.setCompanyPassword("123456"); //Login için CoreBank şirketi şifre: 123456
     Company::companies.push_back(CoreCompany);
-
-
-    Adversitement advert2("Ad Title 2", "Company Description 2", 60000, "Istanbul", "2023-01-20",Adversitement::nextAdId++, CoreCompany.getCompanyId(), "Finance and Banking","Accounting staff", "At the workplace","Periodic / Project based", "2-5 years", "Middle manager", "Master - Graduate", "German","Not Done (Postponed)");
-    Adversitement::adversitement.push_back(advert2);
 
     Adversitement advert1("Ad Title 1", "Company Description 1", 50000, "Berlin", "2023-01-15",Adversitement::nextAdId++, RecordCompany.getCompanyId(), "Technology and Software","Software specialist", "Remote/Remote","Permanent / Full time", "0-2 years", "Beginner", "University graduate", "English","Done, Exempt");
     Adversitement::adversitement.push_back(advert1);
 
-
-    //User profile infoları için tanımlamalar
-    string userFirstName, userLastName, userGender, userNationality, userIdentityNumber;
-    bool userDisabilitySituation = false, userRelativeOfMarty = false;
-    bool userHasDoneMilitaryService = false, userWorkingStatus = false;
-    int userBirthDay, userBirthMonth, userBirthYear;
-
-    //Company profile infoları için tanımlamalar
-    string CompanyName, CompanyPhoneNumber, CompanyEmail, CompanyCity, CompanyTaxNumber, CompanyTaxOfficeCity;
-
-    //Advertisement özellikleri için tanımlamalar:
-    int AdvertisementId, NumberOfQuotas, Salary;
-    string AdTitle, CompanyDescription, City, ApplicationDeadLine;
-    string AdSector, AdPosition, AdWorkPreference, AdWorkType, AdExperience, ADPositionLevel, AdEducationLevel, AdLanguage, AdMilitaryService;
+    Adversitement advert2("Ad Title 2", "Company Description 2", 60000, "Istanbul", "2023-01-20",Adversitement::nextAdId++, CoreCompany.getCompanyId(), "Finance and Banking","Accounting staff", "At the workplace","Periodic / Project based", "2-5 years", "Middle manager", "Master - Graduate", "German","Not Done (Postponed)");
+    Adversitement::adversitement.push_back(advert2);
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
     //Back option for user's and company's login and register menu
     bool hasWelcomeScreenBackCalled = true;
 
-    //Back option for user's  main menu menu
+    //Company ve Candidate login sırasında kullanılıyor.
+    string nameCheckUser, passwordCheckUser, nameCheckCompany, passwordCheckCompany;
+
+    //User's  main menu  and bak option
+    bool hasCandidateMainMenuCalled = false;
     bool hasCandidateMainMenuBackCalled = true;
+
+    //Company's  main menu  and bak option
+
+    bool hasCompanyMainMenuCalled = false;
     bool hasCompanyMainMenuBackCalled = true;
 
-    bool hasCandidateMainMenuCalled = false;
-    bool hasCompanyMainMenuCalled = false;
-
-
-    string nameCheckUser, passwordCheckUser, nameCheckCompany, passwordCheckCompany;
-    int back;
     int candidateMyProfileChoice, welcomeChoice, candidateMainMenuChoice, companyMainMenuChoice;
 
-
-    User newUser;
-    Company newCompany;
-
-    Adversitement newAdversitement;
-
-    Hobie Hobies; string hobies;
-
-
-    int userId;
+    int userId; int back;
 
     while (hasWelcomeScreenBackCalled) {
         switch (menuMethods.WelcomeScreen()) {
@@ -186,7 +216,10 @@ int main() {
                                 case 1: // 1-Adverts that might suit me
                                     cout << "Displaying adverts might suit me..." << endl;
                                     hasCandidateMainMenuBackCalled = false;
-                                    break;
+
+                                    cout << "1-Back to Candidate Main Menu\n>";
+                                    back = menuMethods.getUserInputWithControl();
+                                    if (back == 1) { continue; }
 
                                 case 2: // 2-Display all adverts
                                     cout << "Displaying all adverts..." << endl;
@@ -196,6 +229,7 @@ int main() {
                                     cout << "1-Back to Candidate Main Menu\n>";
                                     back = menuMethods.getUserInputWithControl();
                                     if (back == 1) { continue; }
+                                    break;
 
                                 case 3: // 3-My Profile
                                     cout << "Profile page is loading..." << endl;
@@ -210,7 +244,6 @@ int main() {
                                             if (back == 1) { continue; }
 
                                         case 2: // Update My Profile Information
-
                                             User::users.pop_back();
                                             newUser.updateCandidateProfileInformation();
                                             cout << "Your new profile informations:" << endl;
@@ -220,7 +253,6 @@ int main() {
                                             cout << "1-Back to Candidate Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
                                             if (back == 1) { continue; }
-
 
                                         case 3: // Back to Candidate Main Menu
                                             cout << "Returning to candidate main menu..." << endl;
@@ -239,14 +271,14 @@ int main() {
 
                                             cout << "Add communication information to your cv:" << endl;
                                             cin.ignore();
-                                            cout << "Add phone:" << endl;
-                                            getline(cin, phone);
                                             cout << "Add email:" << endl;
                                             getline(cin, email);
+                                            cout << "Add phone:" << endl;
+                                            getline(cin, phone);
                                             cout << "Add Address:" << endl;
                                             getline(cin, address);
 
-                                            commInfo.addCommuni(newUser.getID(), email, phone, address);
+                                            commInfo= CommunicationInformation(email,phoneNumber,address);
 
                                             cout << "Adding Successful..." << endl;
                                             commInfo.display();
@@ -255,6 +287,7 @@ int main() {
                                             back = menuMethods.getUserInputWithControl();
                                             if (back == 1) { continue; }
                                             break;
+
                                         case 2: // Add Education Information
                                             cout << "Add education information to your cv:" << endl;
                                             //user= new EducationInformation();
@@ -263,7 +296,7 @@ int main() {
                                             cout << "Enter Graduated High School:";
                                             getline(cin,school1);
                                             cin.ignore();
-                                            cout << "Enter Gradıated point High School";
+                                            cout << "Enter Graduated point High School";
                                             cin >> schoolRank;
                                             cin.ignore();
                                             cout << "Enter University Name: ";
@@ -290,25 +323,12 @@ int main() {
                                             myEducation->addEducationInformation(user->getID(),school1,schoolRank,myUni,Erasmus);
                                             user->display();
 
-                                            if(schoolRank>=90){
-                                                AlgoPoint+=2.5;
-                                            }
-                                            else{
-                                                AlgoPoint+=0.5;
-                                            }
-                                            if(myUni.GPA>=2 && myUni.GPA<3){
-                                                AlgoPoint+=1.5;
-                                            }
-                                            if(myUni.GPA>=3 && myUni.GPA<3.5){
-                                                AlgoPoint+=3.5;
-                                            }
-                                            if(myUni.GPA>=3.5 && myUni.GPA<4){
-                                                AlgoPoint+=7.5;
-                                            }
-                                            if(Erasmus==true){
-                                                AlgoPoint+=12.5;
-                                            }
-
+                                            if(schoolRank>=90){AlgoPoint+=2.5;}
+                                            else{AlgoPoint+=0.5;}
+                                            if(myUni.GPA>=2 && myUni.GPA<3){AlgoPoint+=1.5;}
+                                            if(myUni.GPA>=3 && myUni.GPA<3.5){AlgoPoint+=3.5;}
+                                            if(myUni.GPA>=3.5 && myUni.GPA<4){AlgoPoint+=7.5;}
+                                            if(Erasmus==true){AlgoPoint+=12.5;}
                                             cout << "Algo point " << AlgoPoint << endl;
 
                                             cout << "1-Back to Candidate Main Menu\n>";
@@ -333,84 +353,34 @@ int main() {
                                             cin >> language.Speaking;
 
                                             myLanguage->setLanguage(user->getID(),language);
-                                            if(language.Speaking == "A1"){
-                                                myRank=myRank+0.2;
-                                            }
-                                            if(language.Speaking == "A2"){
-                                                myRank=myRank+0.4;
-                                            }
-                                            if(language.Speaking == "B1"){
-                                                myRank=myRank+0.6;
-                                            }
-                                            if(language.Speaking == "B2"){
-                                                myRank=myRank+0.8;
-                                            }
-                                            if(language.Speaking == "C1"){
-                                                myRank=myRank+1;
-                                            }
-                                            if(language.Listening == "A1"){
-                                                myRank=myRank+0.2;
-                                            }
-                                            if(language.Listening == "A2"){
-                                                myRank=myRank+0.4;
-                                            }
-                                            if(language.Listening == "B1"){
-                                                myRank=myRank+0.6;
-                                            }
-                                            if(language.Listening == "B2"){
-                                                myRank=myRank+0.8;
-                                            }
-                                            if(language.Listening == "C1"){
-                                                myRank=myRank+1;
-                                            }
-                                            if(language.Reading == "A1"){
-                                                myRank=myRank+0.2;
-                                            }
-                                            if(language.Reading == "A2"){
-                                                myRank=myRank+0.4;
-                                            }
-                                            if(language.Reading == "B1"){
-                                                myRank=myRank+0.6;
-                                            }
-                                            if(language.Reading == "B2"){
-                                                myRank=myRank+0.8;
-                                            }
-                                            if(language.Reading == "C1"){
-                                                myRank=myRank+1;
-                                            }
-                                            if(language.Writing == "A1"){
-                                                myRank=myRank+0.2;
-                                            }
-                                            if(language.Writing == "A2"){
-                                                myRank=myRank+0.4;
-                                            }
-                                            if(language.Writing == "B1"){
-                                                myRank=myRank+0.6;
-                                            }
-                                            if(language.Writing == "B2"){
-                                                myRank=myRank+0.8;
-                                            }
-                                            if(language.Writing == "C1"){
-                                                myRank=myRank+1;
-                                            }
+                                            if(language.Speaking == "A1"){myRank=myRank+0.2;}
+                                            if(language.Speaking == "A2"){myRank=myRank+0.4;}
+                                            if(language.Speaking == "B1"){myRank=myRank+0.6;}
+                                            if(language.Speaking == "B2"){myRank=myRank+0.8;}
+                                            if(language.Speaking == "C1"){myRank=myRank+1;}
+                                            if(language.Listening == "A1"){myRank=myRank+0.2;}
+                                            if(language.Listening == "A2"){myRank=myRank+0.4;}
+                                            if(language.Listening == "B1"){myRank=myRank+0.6;}
+                                            if(language.Listening == "B2"){myRank=myRank+0.8;}
+                                            if(language.Listening == "C1"){myRank=myRank+1;}
+                                            if(language.Reading == "A1"){myRank=myRank+0.2;}
+                                            if(language.Reading == "A2"){myRank=myRank+0.4;}
+                                            if(language.Reading == "B1"){myRank=myRank+0.6;}
+                                            if(language.Reading == "B2"){myRank=myRank+0.8;}
+                                            if(language.Reading == "C1"){myRank=myRank+1;}
+                                            if(language.Writing == "A1"){myRank=myRank+0.2;}
+                                            if(language.Writing == "A2"){myRank=myRank+0.4;}
+                                            if(language.Writing == "B1"){myRank=myRank+0.6;}
+                                            if(language.Writing == "B2"){myRank=myRank+0.8;}
+                                            if(language.Writing == "C1"){myRank=myRank+1;}
                                             cout <<  "rank:" << myRank << endl;
                                             user1->display();
 
-                                            if(myRank>=0 && myRank<=0.8){
-                                                AlgoPoint+=1;
-                                            }
-                                            if(myRank>=0.8 && myRank<=1.6){
-                                                AlgoPoint+=2.5;
-                                            }
-                                            if(myRank>=1.6 && myRank<=2.4){
-                                                AlgoPoint+=5;
-                                            }
-                                            if(myRank>=2.4 && myRank<=3.2){
-                                                AlgoPoint+=10;
-                                            }
-                                            if(myRank>=3.2 && myRank<=4){
-                                                AlgoPoint+=22.5;
-                                            }
+                                            if(myRank>=0 && myRank<=0.8){AlgoPoint+=1;}
+                                            if(myRank>=0.8 && myRank<=1.6){AlgoPoint+=2.5;}
+                                            if(myRank>=1.6 && myRank<=2.4){AlgoPoint+=5;}
+                                            if(myRank>=2.4 && myRank<=3.2){AlgoPoint+=10;}
+                                            if(myRank>=3.2 && myRank<=4){AlgoPoint+=22.5;}
                                             cout << "Algo Point:" << AlgoPoint << endl;
                                             cout << "1-Back to Candidate Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
@@ -442,15 +412,11 @@ int main() {
                                             user2->display();
                                             year=WorkExper->CalculateWorkTime(experience.StartDate,experience.FinishDate);
                                             cout << year;
-                                            if(year>1 && year <=5){
-                                                AlgoPoint+=5;
-                                            }
-                                            if(year>5 && year<10){
-                                                AlgoPoint+=11;
-                                            }
-                                            if(year>=10){
-                                                AlgoPoint+=18;
-                                            }
+
+                                            if(year>1 && year <=5){AlgoPoint+=5;}
+                                            if(year>5 && year<10){AlgoPoint+=11;}
+                                            if(year>=10){AlgoPoint+=18;}
+
                                             cout << "1-Back to Candidate Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
                                             if (back == 1) { continue; }
@@ -475,13 +441,12 @@ int main() {
                                                         cout << "Project End Date:" << endl;
                                                         getline(cin,endDate);
                                                         proje.addProject(name,description,startDate,endDate);
-                                                        cout << "Adding Succesfull..." << endl;
-                                                        if(projecount<11){
-                                                            AlgoPoint+=2;
-                                                        }
+                                                        cout << "Adding Successful..." << endl;
+
+                                                        if(projecount<11){AlgoPoint+=2;}
                                                         break;
                                                     case 2:
-                                                        cout << "Exit Succesfull..." << endl;
+                                                        cout << "Exit Successful..." << endl;
                                                         validChoice=true;
                                                         break;
                                                     default:
@@ -491,10 +456,12 @@ int main() {
                                             }
                                             proje.displayAllProjects();
                                             cout << "Algo" << AlgoPoint;
+
                                             cout << "1-Back to Candidate Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
                                             if (back == 1) { continue; }
                                             break;
+
                                         case 6: // Add Exams Information
                                             cout << "Add exams information to your cv:" << endl;
                                             //user= new ExamInformation(user->getID(),examranks,exampoints);
@@ -503,7 +470,7 @@ int main() {
                                             exitMenu=false;
                                             while (!exitMenu) {
                                                 cout << "WELCOME TO EXAM INFORMATION SYSTEM" << endl;
-                                                cout << "1-Add ÖSYM exams" << endl;
+                                                cout << "1-Add OSYM exams" << endl;
                                                 cout << "2-Add other exams" << endl;
                                                 cout << "3-Exit..." << endl;
                                                 cin >> choice;
@@ -516,7 +483,7 @@ int main() {
                                                         cout << "3-ALES" << endl;
                                                         cout << "4-TUS" << endl;
                                                         cout << "5-YDS" << endl;
-                                                        cout << "6-YÖK DİL" << endl;
+                                                        cout << "6-YOK DIL" << endl;
                                                         cout << "7-Exit..." << endl;
                                                         cout << "Please choice one" << endl;
                                                         cin >> ch;
@@ -527,19 +494,12 @@ int main() {
                                                             cin >> exampoints;
                                                             cout << "Enter your YKS rank:" << endl;
                                                             cin >> examranks;
+
                                                             myExam->addExamRating(id,examranks, exampoints);
-                                                            if(exampoints>=180 && exampoints<=250){
-                                                                AlgoPoint+=0.25;
-                                                            }
-                                                            if(exampoints>=250 && exampoints<=350){
-                                                                AlgoPoint+=0.75;
-                                                            }
-                                                            if(exampoints>=350 && exampoints<=400){
-                                                                AlgoPoint+=2;
-                                                            }
-                                                            if(exampoints>400){
-                                                                AlgoPoint+=5;
-                                                            }
+                                                            if(exampoints>=180 && exampoints<=250){AlgoPoint+=0.25;}
+                                                            if(exampoints>=250 && exampoints<=350){AlgoPoint+=0.75;}
+                                                            if(exampoints>=350 && exampoints<=400){AlgoPoint+=2;}
+                                                            if(exampoints>400){AlgoPoint+=5;}
                                                             myExam->displayYksGraduate();
                                                         }
                                                         else if (ch == 2) {
@@ -547,7 +507,6 @@ int main() {
                                                             cout << "KPSS   ";
                                                             myExam->displayGraduate();
                                                         }
-
                                                         else if (ch == 3) {
                                                             myExam->addExamRating(id,exampoints);
                                                             cout << "ALES   ";
@@ -681,31 +640,25 @@ int main() {
                                             if (back == 1) { continue; }
 
                                             break;
-                                        /*case 10: // Add Working Conditions
+                                        case 10: // Add Working Conditions
                                             cout << "Add working condition to your cv:" << endl;
 
-                                            cout << "Add Salary Excemptions:" << endl;
-                                            cin >> salaryExcemptions;
-                                            cin.ignore();
-
-                                            cout << "Add Disared Positions To:" << endl;
-                                            getline(cin, disaredPositionsTo);
-
-                                            cout << "Add Desired City To Work:" << endl;
-                                            getline(cin, desiredCityToWork);
-
-                                            cout << "Add Travel Capability (0 for no, 1 for yes):" << endl;
+                                            cout << "Your salary exception:";
+                                            cin >> salaryException;
+                                            cout << "Your desire work position:";
+                                            cin >> desiredPosition;
+                                            cout << "Your desire city to work in:";
+                                            cin >> desiredCityToWork;
+                                            cout << "Can u travel everywhere for work? (1 for yes,0 for no):";
                                             cin >> travelCapability;
-                                            cin.ignore();
 
-                                            workConditions.add(newUser.getID(), salaryExcemptions, disaredPositionsTo, desiredCityToWork, travelCapability);
-
-                                            cout << "Adding Successful..." << endl;
+                                            workConditions.add(newUser.getID(),salaryException,desiredPosition,desiredCityToWork,travelCapability);
                                             workConditions.display();
+
                                             cout << "1-Back to Candidate Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
                                             if (back == 1) { continue; }
-                                            break;*/
+
                                         case 11: // Add Social Skills
                                             cout << "Add social skill to your cv:" << endl;
                                             cin.ignore();
@@ -747,6 +700,9 @@ int main() {
                                                 social.add(user->getID(),socialfactor,volunteerwork);
                                             }
                                             social.display();
+                                            cout << "1-Back to Candidate Main Menu\n>";
+                                            back = menuMethods.getUserInputWithControl();
+                                            if (back == 1) { continue; }
                                             break;
 
                                         case 12: // Add Hobbies
@@ -775,8 +731,10 @@ int main() {
                                     }
 
                                 case 5: // 5-My Rank and Applied Ads
-                                    cout << "My Rank and Applied Ads page is loading..." << endl;
-                                    hasCandidateMainMenuBackCalled = false;
+                                    cout << "My Rank:" << AlgoPoint << endl;
+                                    cout << "1-Back to Candidate Main Menu\n>";
+                                    back = menuMethods.getUserInputWithControl();
+                                    if (back == 1) { continue; }
                                     break;
 
                                 case 6:
@@ -818,6 +776,8 @@ int main() {
                         // Kullanıcıyı veritabanına ekle
                         User::users.push_back(newUser);
 
+                        AlgoPoint=0;
+
                         cout << "Your registration process has been successfully completed!" << endl;
 
                         newUser.displayCandidateUserName();
@@ -833,7 +793,10 @@ int main() {
                             switch (candidateMainMenuChoice) {
                                 case 1: // 1-Adverts that might suit me
                                     cout << "Displaying adverts might suit me..." << endl;
-                                    hasCandidateMainMenuBackCalled = false;
+
+                                    cout << "1-Back to Candidate Main Menu\n>";
+                                    back = menuMethods.getUserInputWithControl();
+                                    if (back == 1) { continue; }
                                     break;
 
                                 case 2: // 2-Display all adverts
@@ -888,14 +851,14 @@ int main() {
                                         case 1: // Add Communication Information
                                             cout << "Add communication information to your cv:" << endl;
                                             cin.ignore();
-                                            cout << "Add phone:" << endl;
-                                            getline(cin, phone);
                                             cout << "Add email:" << endl;
                                             getline(cin, email);
+                                            cout << "Add phone:" << endl;
+                                            getline(cin, phone);
                                             cout << "Add Address:" << endl;
                                             getline(cin, address);
 
-                                            commInfo.addCommuni(newUser.getID(), email, phone, address);
+                                            commInfo= CommunicationInformation(email,phoneNumber,address);
 
                                             cout << "Adding Successful..." << endl;
                                             commInfo.display();
@@ -1063,6 +1026,7 @@ int main() {
                                                 AlgoPoint+=22.5;
                                             }
                                             cout << "Algo Point:" << AlgoPoint << endl;
+
                                             cout << "1-Back to Candidate Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
                                             if (back == 1) { continue; }
@@ -1272,7 +1236,11 @@ int main() {
                                             break;
                                         case 7: // Add Expertise Areas
                                             cout << "Add expertise area to your cv:" << endl;
+                                            cout << "1-Back to Candidate Main Menu\n>";
+                                            back = menuMethods.getUserInputWithControl();
+                                            if (back == 1) { continue; }
                                             break;
+
                                         case 8: // Add Reference
                                             cout << "Add reference to your cv:" << endl;
                                             cin.ignore();
@@ -1333,30 +1301,24 @@ int main() {
                                             if (back == 1) { continue; }
                                             break;
                                         case 10: // Add Working Conditions
-                                            /*cout << "Add working condition to your cv:" << endl;
+                                            cout << "Add working condition to your cv:" << endl;
 
-                                            cout << "Add Salary Excemptions:" << endl;
-                                            cin >> salaryExcemptions;
-                                            cin.ignore();
-
-                                            cout << "Add Disared Positions To:" << endl;
-                                            getline(cin, disaredPositionsTo);
-
-                                            cout << "Add Desired City To Work:" << endl;
-                                            getline(cin, desiredCityToWork);
-
-                                            cout << "Add Travel Capability (0 for no, 1 for yes):" << endl;
+                                            cout << "Your salary exception:";
+                                            cin >> salaryException;
+                                            cout << "Your desire work position:";
+                                            cin >> desiredPosition;
+                                            cout << "Your desire city to work in:";
+                                            cin >> desiredCityToWork;
+                                            cout << "Can u travel everywhere for work? (1 for yes,0 for no):";
                                             cin >> travelCapability;
-                                            cin.ignore();
 
-                                            workConditions.add(newUser.getID(), salaryExcemptions, disaredPositionsTo, desiredCityToWork, travelCapability);
-
-                                            cout << "Adding Successful..." << endl;
+                                            workConditions.add(newUser.getID(),salaryException,desiredPosition,desiredCityToWork,travelCapability);
                                             workConditions.display();
+
                                             cout << "1-Back to Candidate Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
                                             if (back == 1) { continue; }
-                                            break;*/
+                                            break;
                                         case 11: // Add Social Skills
                                             cout << "Add social skill to your cv:" << endl;
                                             validChoice = false;
@@ -1397,6 +1359,9 @@ int main() {
                                                 social.add(user->getID(),socialfactor,volunteerwork);
                                             }
                                             social.display();
+                                            cout << "1-Back to Candidate Main Menu\n>";
+                                            back = menuMethods.getUserInputWithControl();
+                                            if (back == 1) { continue; }
                                             break;
                                         case 12: // Add Hobbies
                                             cout << "Add Hobbies to your cv:" << endl;
@@ -1412,8 +1377,8 @@ int main() {
                                             cout << "1-Back to Candidate Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
                                             if (back == 1) { continue; }
-
                                             break;
+
                                         case 13: // Back to User Main Menu
                                             cout << "Returning to candidate main menu..." << endl;
                                             continue;
@@ -1421,7 +1386,7 @@ int main() {
                                     break;
 
                                 case 5: // 5-My Rank and Applied Ads
-                                    cout << "My Rank and Applied Ads page is loading..." << endl;
+                                    cout << "My Rank:"<< AlgoPoint << endl;
                                     hasCandidateMainMenuBackCalled = false;
                                     break;
 

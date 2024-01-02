@@ -13,27 +13,30 @@ vector<CommunicationInformation> CommunicationInformation::infos;
 CommunicationInformation::CommunicationInformation() : email(""), phone(""), address("") {}
 
 // Parametrized constructor
-CommunicationInformation::CommunicationInformation(const string& email, const string& phone, const string& address)
-        : email(email), phone(phone), address(address) {}
+CommunicationInformation::CommunicationInformation( string email,string phone,string address)
+         {   this->email =email;
+             this->phone =email;
+             this->address =email;
+         }
 
 // Destructor
 CommunicationInformation::~CommunicationInformation() {}
 
 // Getter implementations
-string CommunicationInformation::getEmail() const {
-    return email;
+string CommunicationInformation::getEmail(){
+    return  this->email;
 }
 
-string CommunicationInformation::getPhone() const {
-    return phone;
+string CommunicationInformation::getPhone(){
+    return  this->phone;
 }
 
-string CommunicationInformation::getAddress() const {
-    return address;
+string CommunicationInformation::getAddress(){
+    return this->address;
 }
 
 // Display function
-void CommunicationInformation::display() const {
+void CommunicationInformation::display(){
     cout << "Email: " << getEmail() << endl;
     cout << "Phone: " << getPhone() << endl;
     cout << "Address: " << getAddress() << endl;

@@ -5,70 +5,50 @@
 #ifndef WORK_COMPLIANCE_ANALYSIS_SYSTEM_WORKCONDITIONS_H
 #define WORK_COMPLIANCE_ANALYSIS_SYSTEM_WORKCONDITIONS_H
 
-/*
+
+#include <string>
+#include <utility>
+#include <vector>
+#include "Candidate/User.h"
+
 #include <string>
 #include <vector>
 #include "Candidate/User.h"
-using namespace std;
+
 class WorkConditions : public User {
+
 private:
-    vector<WorkConditions> workconditions;
-    int SalaryExcemptions;
-    string DisaredPositionsTo;
+
+    int SalaryException;
+    string DesiredPosition;
     string DesiredCityToWork;
     bool TravelCapability;
 
-public:
+    vector<WorkConditions> workConditions;
 
-    //default constructor
+public:
+    //Default Constructor
     WorkConditions();
 
-    // parametreli constructor
+    //Parameterized Constructor
     WorkConditions(int id,
-                   int SalaryExcemptions,
-                   string DisaredPositionsTo,
-                   string DesiredCityToWork,
-                   bool TravelCapability);
+                   int salaryException,
+                   string desiredPosition,
+                   string desiredCityToWork,
+                   bool travelCapability);
 
-    void display () override;
-    void update();
-    void remove();
-    void add(int id,int salaryExcemptions,string disaredPositionsTo,string disaredCityToWork);
 
-    const string &getDisaredPositionsTo() const;
+    void display() override;
 
-    void setDisaredPositionsTo(const string &disaredPositionsTo);
+    void add(int id, int salaryException, string desiredPosition, string desiredCityToWork, bool travelCapability);
 
-    int getSalaryExcemptions() const;
 
-    void setSalaryExcemptions(int salaryExcemptions);
 
-    const string &getDesiredCityToWork() const;
+    int getSalaryException() const;
+    string getDesiredPosition() const;
+    string getDesiredCityToWork() const;
+    bool getTravelCapability() const;
 
-    void setDesiredCityToWork(const string &desiredCityToWork);
-
-    bool isTravelCapability() const;
-
-    void setTravelCapability(bool travelCapability);
-
-    void add(int id, int salaryExcemptions, string disaredPositionsTo, string disaredCityToWork, bool travelCapability);
-
-    const vector<WorkConditions> &getWorkconditions() const;
-
-    void getAdvertisementInfo(string& adTitle,
-                              string& companyDescription,
-                              int& salary,
-                              string& city,
-                              string& applicationDeadLine,
-                              string& sector,
-                              string& position,
-                              string& workPreference,
-                              string& workType,
-                              string& experience,
-                              string& positionLevel,
-                              string& educationLevel,
-                              string& language,
-                              string& militaryService);
-};*/
+};
 
 #endif //WORK_COMPLIANCE_ANALYSIS_SYSTEM_WORKCONDITIONS_H

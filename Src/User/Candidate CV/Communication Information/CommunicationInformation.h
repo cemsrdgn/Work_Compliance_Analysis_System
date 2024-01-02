@@ -13,16 +13,16 @@ using namespace std;
 class CommunicationInformation {
 public:
     CommunicationInformation();  // Default constructor
-    CommunicationInformation(const string& email, const string& phone, const string& address);  // Parametrized constructor
+    CommunicationInformation(string email,string phone,string address);  // Parametrized constructor
     ~CommunicationInformation();  // Destructor
 
-    void display() const;
+    void display();
     void update(const string& email, const string& phone, const string& address);
 
     // Getter functions
-    string getEmail() const;
-    string getPhone() const;
-    string getAddress() const;
+    string getEmail();
+    string getPhone();
+    string getAddress() ;
 
     static void addInfo(const string& email, const string& phone, const string& address);
     static void displayAllInfo();
