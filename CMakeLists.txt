@@ -16,8 +16,8 @@ add_executable(Work_Compliance_Analysis_System
         "Src/User/Candidate CV/Hobies/Hobie.h"
         "Src/User/Candidate CV/Foreign Languages/ForeignLanguage.cpp"
         "Src/User/Candidate CV/Foreign Languages/ForeignLanguage.h"
-        "Src/User/Candidate CV/Personal Documents/PersonalDocuments.cpp"
-        "Src/User/Candidate CV/Personal Documents/PersonalDocuments.h"
+        "Src/User/Candidate CV/Personal Documents/PersonalDocument.cpp"
+        "Src/User/Candidate CV/Personal Documents/PersonalDocument.h"
         "Src/User/Candidate CV/Projects/Projects.cpp"
         "Src/User/Candidate CV/Projects/Projects.h"
         "Src/User/Candidate CV/Certificates/Certificates.cpp"
@@ -29,4 +29,8 @@ add_executable(Work_Compliance_Analysis_System
         "Src/User/Candidate CV/Work Experiences/WorkExperience.cpp"
         "Src/User/Candidate CV/Work Experiences/WorkExperience.h"
         main.cpp
-        README.md)
+        README.md
+        "Src/User/Candidate CV/Exams Information/ExamInformation.h"
+        "Src/User/Candidate CV/Exams Information/ExamInformation.cpp"
+        "Src/User/Candidate CV/Refarance/Refarance.h"
+        "Src/User/Candidate CV/Refarance/Refarance.cpp")

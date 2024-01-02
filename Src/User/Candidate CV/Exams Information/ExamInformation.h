@@ -21,6 +21,7 @@ public:
 
     ExamInformation(int id,float examrank,float exampoint);
     ExamInformation(int id,float exampoint);
+    ExamInformation();
     void addExamRating(int id,float examrank,float exampoint);
     void addExamRating(int id,float point);
     float getExamRank();

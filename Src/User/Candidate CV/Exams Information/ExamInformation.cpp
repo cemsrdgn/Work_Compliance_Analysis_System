@@ -17,6 +17,7 @@ ExamInformation::ExamInformation(int ıd,float point)
     this->ID=ıd;
     this->ExamPoint=point;
 }
+ExamInformation::ExamInformation() {}
 void ExamInformation:: addExamRating(int ıd,float examrank,float exampoint){
     ExamInformation newgradute(ıd,examrank,exampoint);
     graduates.push_back(newgradute);

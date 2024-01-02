@@ -5,11 +5,11 @@
 #ifndef WORK_COMPLIANCE_ANALYSIS_SYSTEM_WORKCONDITIONS_H
 #define WORK_COMPLIANCE_ANALYSIS_SYSTEM_WORKCONDITIONS_H
 
-
+/*
 #include <string>
 #include <vector>
 #include "Candidate/User.h"
-
+using namespace std;
 class WorkConditions : public User {
 private:
     vector<WorkConditions> workconditions;
@@ -69,6 +69,6 @@ public:
                               string& educationLevel,
                               string& language,
                               string& militaryService);
-};
+};*/
 
 #endif //WORK_COMPLIANCE_ANALYSIS_SYSTEM_WORKCONDITIONS_H

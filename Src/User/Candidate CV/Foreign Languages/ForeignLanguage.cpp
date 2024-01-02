@@ -13,6 +13,7 @@ ForeignLanguage::ForeignLanguage(int id,Language language1)
 {
     this->language=language1;
 }
+ForeignLanguage::ForeignLanguage() {}
 
 string ForeignLanguage::getLanguageName(){
     return this->language.LanguageName;

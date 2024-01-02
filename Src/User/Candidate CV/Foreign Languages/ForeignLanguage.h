@@ -26,6 +26,7 @@ private:
     vector<ForeignLanguage> lan;
 public:
     ForeignLanguage(int id,Language language1);
+    ForeignLanguage();
     string getLanguageName();
     string getWriting();
     string getReading();

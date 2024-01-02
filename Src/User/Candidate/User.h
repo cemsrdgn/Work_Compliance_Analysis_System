@@ -10,7 +10,6 @@
 
 #include "../../../Formats/Date Format/Date.h"
 #include "../../../Methods/MenuMethods/MenuMethods.h"
-#include "Candidate CV/Education Information/EducationInformation.h"
 #include "../../Company/Company.h"
 
 using namespace std;

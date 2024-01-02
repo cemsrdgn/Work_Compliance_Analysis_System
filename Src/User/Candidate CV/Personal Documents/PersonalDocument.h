@@ -2,15 +2,15 @@
 // Created by cemsr on 15.12.2023.
 //
 
-#ifndef WORK_COMPLIANCE_ANALYSIS_SYSTEM_PERSONALDOCUMENTS_H
-#define WORK_COMPLIANCE_ANALYSIS_SYSTEM_PERSONALDOCUMENTS_H
+#ifndef WORK_COMPLIANCE_ANALYSIS_SYSTEM_PERSONALDOCUMENT_H
+#define WORK_COMPLIANCE_ANALYSIS_SYSTEM_PERSONALDOCUMENT_H
 
 #include <string>
 #include <vector>
 using namespace std;
 
 
-class PersonalDocuments {
+class PersonalDocument {
 public:
     PersonalDocument();  // Default constructor
     PersonalDocument(const string& title, const string& type, const string& content);  // Parametrized constructor
@@ -31,4 +31,4 @@ private:
 };
 
 
-#endif //WORK_COMPLIANCE_ANALYSIS_SYSTEM_PERSONALDOCUMENTS_H
+#endif //WORK_COMPLIANCE_ANALYSIS_SYSTEM_PERSONALDOCUMENT_H
