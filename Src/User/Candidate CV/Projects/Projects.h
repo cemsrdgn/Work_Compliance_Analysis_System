@@ -13,7 +13,7 @@ class Projects {
 public:
     Project();  // Default constructor
     Project(const string& name, const string& description, const string& startDate, const string& endDate);  // Parametrized constructor
-    ~Project();  // Destructor
+    ~Project();  // Destructor.
 
     void display() const;
     void update(const string& name, const string& description, const string& startDate, const string& endDate);

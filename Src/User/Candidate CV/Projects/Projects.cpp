@@ -41,7 +41,7 @@ void Project::addProject(const string& name, const string& description, const st
     projects.push_back(newProject);
 }
 
-// Static function to display all projects
+// Static function to display all projects.
 void Project::displayAllProjects() {
     for (size_t i = 0; i < projects.size(); i++) {
         projects[i].display();
