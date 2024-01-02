@@ -6,17 +6,37 @@
 #include <string>
 #include <vector>
 #include <iostream>
-
 using namespace std;
 
 EducationInformation::EducationInformation(
         int id,
         string highSchool,
-        University university)
+        float highSchoolPoint,
+        University university,
+        bool iserasmus)
 {
     this->ID=id;
     this->HighSchool=highSchool;
+    this->HighSchoolPoint=highSchoolPoint;
     this->uni=university;
+    this->isErasmus=iserasmus;
+}
+EducationInformation::EducationInformation(
+
+        string highSchool,
+        float highSchoolPoint,
+        University university,
+        bool iserasmus)
+{
+
+    this->HighSchool=highSchool;
+    this->HighSchoolPoint=highSchoolPoint;
+    this->uni=university;
+    this->isErasmus=iserasmus;
+}
+
+float EducationInformation::getHighSchoolPoint() {
+    return this->HighSchoolPoint;
 }
 EducationInformation::EducationInformation(){}
 
@@ -53,14 +73,21 @@ string EducationInformation::getMinor(){
 float EducationInformation::getGPA(){
     return this->uni.GPA;
 }
-void EducationInformation::addEducationInformation(int id,string school, University univ) {
-    EducationInformation newEdu(id,school,univ);
+void EducationInformation::addEducationInformation(int id,string school, float highSchoolPoint,University univ, bool erasmus) {
+    EducationInformation newEdu(id,school,highSchoolPoint,univ,erasmus);
     education.push_back(newEdu);
+}
+bool EducationInformation::getIsErasmus() {
+    return this->isErasmus;
+}
+bool EducationInformation::serIsErasmus(bool erasmus) {
+    this->isErasmus=erasmus;
 }
 void EducationInformation::display() {
     cout << "Education Information " << endl;
     for (size_t i = 0; i < education.size(); i++) {
         cout << i + 1 << " High school " << education[i].getHighSchool() << endl;
+        cout << "High school grqaduated point:" << education[i].getHighSchoolPoint() << endl;
         cout << " University Name " << education[i].getUniversityName() << endl;
         cout << " Faculty " << education[i].getFaculty() << endl;
         cout << " Department " << education[i].getDepartment() << endl;

@@ -11,7 +11,6 @@ using namespace std;
 
 ForeignLanguage::ForeignLanguage(int id,Language language1)
 {
-    this->ID=id;
     this->language=language1;
 }
 

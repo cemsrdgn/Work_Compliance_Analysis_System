@@ -8,9 +8,9 @@
 using namespace std;
 
 WorkExperience::WorkExperience(int id,Experience experience1){
-    this->ID=id;
     this->experience=experience1;
 }
+WorkExperience::WorkExperience(){}
 
 string WorkExperience::getCompanyName() {
     return this->experience.CompanyName;
@@ -34,8 +34,6 @@ int WorkExperience::getFinishDate() {
     return this->experience.FinishDate;
 }
 int WorkExperience::CalculateWorkTime(int s1, int s2) {
-    s1=this->experience.StartDate;
-    s2=this->experience.FinishDate;
     return s2-s1;
 }
 void WorkExperience::addExperience(int id,Experience experience1) {
