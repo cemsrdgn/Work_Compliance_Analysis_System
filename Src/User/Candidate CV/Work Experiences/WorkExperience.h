@@ -26,6 +26,7 @@ private:
     vector<WorkExperience>exper;
 public:
     WorkExperience(int id,Experience experience1);
+    WorkExperience();
     string getCompanyName();
     string getPosition();
     string getWorkType();
