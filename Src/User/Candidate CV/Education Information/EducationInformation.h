@@ -10,7 +10,6 @@
 #include "Candidate/User.h"
 
 using namespace std;
-
 struct University{
     string UniversityName;
     string Faculty;
@@ -24,15 +23,20 @@ struct University{
     float GPA;
 };
 
-class EducationInformation:public User{
+class EducationInformation : public User{
 private:
     string HighSchool;
+    float HighSchoolPoint;
+    bool isErasmus;
     University uni;
     vector<EducationInformation> education;
 public:
 
-    EducationInformation(int id, string highschool, University university);
+    EducationInformation(int id, string highschool, float highSchoolPoint, University university,bool iserasmus);
+    EducationInformation(string highschool, float highSchoolPoint, University university,bool iserasmus);
     EducationInformation();
+    bool getIsErasmus();
+    bool serIsErasmus(bool erasmus);
     string getHighSchool();
     string getUniversityName();
     string getFaculty();
@@ -45,8 +49,8 @@ public:
     string getDoubleMajor();
     string getMinor();
     float getGPA();
-    void addEducationInformation(int id,string school,University univ);
+    float getHighSchoolPoint();
+    void addEducationInformation(int id,string school,float highSchoolPoint,University univ,bool erasmus);
     void display() override;
 };
-
 #endif //WORK_COMPLIANCE_ANALYSIS_SYSTEM_EDUCATIONINFORMATION_H

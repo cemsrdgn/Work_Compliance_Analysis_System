@@ -10,7 +10,7 @@ using namespace std;
 void SocialFactors::display(){
 
 }
-SocialFactors::SocialFactors(int id,string socialfactors,string volunteerwork) {
+SocialFactors::SocialFactors(int id,string socialfactors=" ",string volunteerwork=" ") {
 
     this->ID=id;
     this->SocialFactor=socialfactors;
@@ -18,13 +18,14 @@ SocialFactors::SocialFactors(int id,string socialfactors,string volunteerwork) {
 
 }
 
-void SocialFactors::add(int id,string socialfactors,string volunteerwork){
+void SocialFactors::add(int id,string socialfactors=" ",string volunteerwork=" "){
     SocialFactors newsocial(id,socialfactors,volunteerwork);
     Social.push_back(newsocial);
 }
-void SocialFactors::remove(int id,string socialfactors,string volunteerwork) {
+
+void SocialFactors::remove(int id,string socialfactors=" ",string volunteerwork=" ") {
     SocialFactors newsocial(id,socialfactors,volunteerwork);
-    SocialFactor.pop_back();
+    Social.pop_back();
 }
 
 void SocialFactors::update() {
@@ -49,4 +50,3 @@ void SocialFactors::setSocialFactor(const string &socialFactor) {
 void SocialFactors::setSocial(const vector<SocialFactors> &social) {
     Social = social;
 }
-#include "SocialSkills.h"

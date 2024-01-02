@@ -15,16 +15,16 @@ using namespace std;
 class ExamInformation : public User {
 private:
     vector<ExamInformation>graduates;
-    string ExamRank;
-    string ExamPoint;
+    float ExamRank;
+    float ExamPoint;
 public:
 
-    ExamInformation(int id,string examrank,string exampoint);
-    ExamInformation(int id,string exampoint);
-    void addExamRating(int id,string examrank,string exampoint);
-    void addExamRating(int id,string point);
-    string getExamRank();
-    string getExamPoint();
+    ExamInformation(int id,float examrank,float exampoint);
+    ExamInformation(int id,float exampoint);
+    void addExamRating(int id,float examrank,float exampoint);
+    void addExamRating(int id,float point);
+    float getExamRank();
+    float getExamPoint();
     void displayGraduate();
     void displayYksGraduate();
     void selectExam();

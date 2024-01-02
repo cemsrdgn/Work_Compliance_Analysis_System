@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include "Candidate/User.h"
+
 class SocialFactors: public User {
 private:
     string SocialFactor;
@@ -20,11 +21,11 @@ public:
 
     // parametreli constructor
     SocialFactors(int id,string socialfactors,string volunteerwork);
-
     void display () override;
     void update();
     void remove(int id,string socialfactors,string volunteerwork);
-    void add(int id,string volunteerwork,string socialfactors);
+    void add(int id,string socialfactors,string volunteerwork);
+    void add(int id,string socialfactors);
 
     const vector<SocialFactors> &getSocialFactor() const;
 
