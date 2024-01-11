@@ -106,6 +106,7 @@ int main() {
     Adversitement newAdversitement;
     //Advertisement özellikleri için tanımlamalar:
     int AdvertisementId, NumberOfQuotas, Salary;
+    float Point;
     string AdTitle, CompanyDescription, City, ApplicationDeadLine;
     string AdSector, AdPosition, AdWorkPreference, AdWorkType, AdExperience, ADPositionLevel, AdEducationLevel,AdLanguage,
     AdMilitaryService;
@@ -148,10 +149,10 @@ int main() {
     CoreCompany.setCompanyPassword("123456"); //Login için CoreBank şirketi şifre: 123456
     Company::companies.push_back(CoreCompany);
 
-    Adversitement advert1("Ad Title 1", "Company Description 1", 50000, "Berlin", "2023-01-15",Adversitement::nextAdId++, RecordCompany.getCompanyId(), "Technology and Software","Software specialist", "Remote/Remote","Permanent / Full time", "0-2 years", "Beginner", "University graduate", "English","Done, Exempt");
+    Adversitement advert1("Ad Title 1", "Company Description 1", 50000,  "Berlin", "2023-01-15",Adversitement::nextAdId++, RecordCompany.getCompanyId(),40, "Technology and Software","Software specialist", "Remote/Remote","Permanent / Full time", "0-2 years", "Beginner", "University graduate", "English","Done, Exempt");
     Adversitement::adversitement.push_back(advert1);
 
-    Adversitement advert2("Ad Title 2", "Company Description 2", 60000, "Istanbul", "2023-01-20",Adversitement::nextAdId++, CoreCompany.getCompanyId(), "Finance and Banking","Accounting staff", "At the workplace","Periodic / Project based", "2-5 years", "Middle manager", "Master - Graduate", "German","Not Done (Postponed)");
+    Adversitement advert2("Ad Title 2", "Company Description 2", 60000, "Istanbul", "2023-01-20",Adversitement::nextAdId++, CoreCompany.getCompanyId(), 10, "Finance and Banking","Accounting staff", "At the workplace","Periodic / Project based", "2-5 years", "Middle manager", "Master - Graduate", "German","Not Done (Postponed)");
     Adversitement::adversitement.push_back(advert2);
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -215,7 +216,16 @@ int main() {
                             switch (candidateMainMenuChoice) {
                                 case 1: // 1-Adverts that might suit me
                                     cout << "Displaying adverts might suit me..." << endl;
-                                    hasCandidateMainMenuBackCalled = false;
+
+                                    cout << "Your Algorithm Point:" << AlgoPoint << endl;
+
+                                    for (auto &ads: Adversitement::adversitement) {
+
+                                        if ( AlgoPoint >= ads.getAdPoint() && AlgoPoint-20 <= ads.getAdPoint()){
+
+                                            ads.display();
+                                        }
+                                    }
 
                                     cout << "1-Back to Candidate Main Menu\n>";
                                     back = menuMethods.getUserInputWithControl();
@@ -794,10 +804,19 @@ int main() {
                                 case 1: // 1-Adverts that might suit me
                                     cout << "Displaying adverts might suit me..." << endl;
 
+                                    cout << "Your Algorithm Point:" << AlgoPoint << endl;
+
+                                    for (auto &ads: Adversitement::adversitement) {
+
+                                        if ( AlgoPoint >= ads.getAdPoint() && AlgoPoint-20 <= ads.getAdPoint()){
+
+                                            ads.display();
+                                        }
+                                    }
+
                                     cout << "1-Back to Candidate Main Menu\n>";
                                     back = menuMethods.getUserInputWithControl();
                                     if (back == 1) { continue; }
-                                    break;
 
                                 case 2: // 2-Display all adverts
                                     cout << "Displaying all adverts..." << endl;
@@ -1105,7 +1124,8 @@ int main() {
                                                 }
                                             }
                                             proje.displayAllProjects();
-                                            cout << "Algo" << AlgoPoint;
+
+                                            cout << "Algo" << AlgoPoint << endl;
                                             cout << "1-Back to Candidate Main Menu\n>";
                                             back = menuMethods.getUserInputWithControl();
                                             if (back == 1) { continue; }
@@ -1535,6 +1555,7 @@ int main() {
                                             getAdvertisementInfo(AdTitle,
                                                                  CompanyDescription,
                                                                  Salary,
+                                                                 Point,
                                                                  City,
                                                                  ApplicationDeadLine,
                                                                  AdSector,
@@ -1554,6 +1575,7 @@ int main() {
                                                                              ApplicationDeadLine,
                                                                              AdvertisementId,
                                                                              newCompany.getCompanyId(),
+                                                                             Point,
                                                                              AdSector,
                                                                              AdPosition,
                                                                              AdWorkPreference,
@@ -1717,6 +1739,7 @@ int main() {
                                             getAdvertisementInfo(AdTitle,
                                                                  CompanyDescription,
                                                                  Salary,
+                                                                 Point,
                                                                  City,
                                                                  ApplicationDeadLine,
                                                                  AdSector,
@@ -1736,6 +1759,7 @@ int main() {
                                                                              ApplicationDeadLine,
                                                                              AdvertisementId,
                                                                              newCompany.getCompanyId(),
+                                                                             Point,
                                                                              AdSector,
                                                                              AdPosition,
                                                                              AdWorkPreference,

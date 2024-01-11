@@ -1,0 +1,3 @@
+C:/Users/cemsr/Desktop/Work_Compliance_Analysis_System/cmake-build-debug/CMakeFiles/Work_Compliance_Analysis_System.dir
+C:/Users/cemsr/Desktop/Work_Compliance_Analysis_System/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/cemsr/Desktop/Work_Compliance_Analysis_System/cmake-build-debug/CMakeFiles/rebuild_cache.dir

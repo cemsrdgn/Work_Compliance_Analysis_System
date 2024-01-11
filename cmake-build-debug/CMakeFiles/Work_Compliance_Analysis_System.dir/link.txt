@@ -1,0 +1,3 @@
+"D:\Clion\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Work_Compliance_Analysis_System.dir/objects.a
+"D:\Clion\CLion 2021.3.3\bin\mingw\bin\ar.exe" qc CMakeFiles\Work_Compliance_Analysis_System.dir/objects.a @CMakeFiles\Work_Compliance_Analysis_System.dir\objects1.rsp
+"D:\Clion\CLion 2021.3.3\bin\mingw\bin\g++.exe" -g -Wl,--whole-archive CMakeFiles\Work_Compliance_Analysis_System.dir/objects.a -Wl,--no-whole-archive -o Work_Compliance_Analysis_System.exe -Wl,--out-implib,libWork_Compliance_Analysis_System.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Work_Compliance_Analysis_System.dir\linklibs.rsp

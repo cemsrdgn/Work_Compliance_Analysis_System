@@ -1,0 +1,59 @@
+The system is: Windows - 10.0.19045 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: D:/Clion/CLion 2021.3.3/bin/mingw/bin/gcc.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+
+The C compiler identification is GNU, found in "C:/Users/cemsr/Desktop/Work_Compliance_Analysis_System/cmake-build-debug/CMakeFiles/3.21.1/CompilerIdC/a.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: D:/Clion/CLion 2021.3.3/bin/mingw/bin/g++.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+
+The CXX compiler identification is GNU, found in "C:/Users/cemsr/Desktop/Work_Compliance_Analysis_System/cmake-build-debug/CMakeFiles/3.21.1/CompilerIdCXX/a.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/cemsr/Desktop/Work_Compliance_Analysis_System/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Clion/CLion 2021.3.3/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_b2f08/fast && D:/Clion/CLion 2021.3.3/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_b2f08.dir\build.make CMakeFiles/cmTC_b2f08.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/cemsr/Desktop/Work_Compliance_Analysis_System/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b2f08.dir/testCCompiler.c.obj
+"D:\Clion\CLion 2021.3.3\bin\mingw\bin\gcc.exe"    -o CMakeFiles\cmTC_b2f08.dir\testCCompiler.c.obj -c C:\Users\cemsr\Desktop\Work_Compliance_Analysis_System\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c
+Linking C executable cmTC_b2f08.exe
+"D:\Clion\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_b2f08.dir\link.txt --verbose=1
+"D:\Clion\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\cmTC_b2f08.dir/objects.a
+"D:\Clion\CLion 2021.3.3\bin\mingw\bin\ar.exe" qc CMakeFiles\cmTC_b2f08.dir/objects.a @CMakeFiles\cmTC_b2f08.dir\objects1.rsp
+"D:\Clion\CLion 2021.3.3\bin\mingw\bin\gcc.exe" -Wl,--whole-archive CMakeFiles\cmTC_b2f08.dir/objects.a -Wl,--no-whole-archive -o cmTC_b2f08.exe -Wl,--out-implib,libcmTC_b2f08.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_b2f08.dir\linklibs.rsp
+mingw32-make[1]: Leaving directory 'C:/Users/cemsr/Desktop/Work_Compliance_Analysis_System/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/Users/cemsr/Desktop/Work_Compliance_Analysis_System/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/Clion/CLion 2021.3.3/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_c0f00/fast && D:/Clion/CLion 2021.3.3/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_c0f00.dir\build.make CMakeFiles/cmTC_c0f00.dir/build
+mingw32-make[1]: Entering directory 'C:/Users/cemsr/Desktop/Work_Compliance_Analysis_System/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_c0f00.dir/testCXXCompiler.cxx.obj
+"D:\Clion\CLion 2021.3.3\bin\mingw\bin\g++.exe"    -o CMakeFiles\cmTC_c0f00.dir\testCXXCompiler.cxx.obj -c C:\Users\cemsr\Desktop\Work_Compliance_Analysis_System\cmake-build-debug\CMakeFiles\CMakeTmp\testCXXCompiler.cxx
+Linking CXX executable cmTC_c0f00.exe
+"D:\Clion\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_c0f00.dir\link.txt --verbose=1
+"D:\Clion\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\cmTC_c0f00.dir/objects.a
+"D:\Clion\CLion 2021.3.3\bin\mingw\bin\ar.exe" qc CMakeFiles\cmTC_c0f00.dir/objects.a @CMakeFiles\cmTC_c0f00.dir\objects1.rsp
+"D:\Clion\CLion 2021.3.3\bin\mingw\bin\g++.exe" -Wl,--whole-archive CMakeFiles\cmTC_c0f00.dir/objects.a -Wl,--no-whole-archive -o cmTC_c0f00.exe -Wl,--out-implib,libcmTC_c0f00.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_c0f00.dir\linklibs.rsp
+mingw32-make[1]: Leaving directory 'C:/Users/cemsr/Desktop/Work_Compliance_Analysis_System/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+

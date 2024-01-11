@@ -10,7 +10,7 @@ class MenuMethods {
 
 public:
 
-    //It is control for non number inputs. Like chars or symbols. (From ChatGPT)
+    //It is control for non number inputs. Like chars or symbols.
     int getUserInputWithControl();
 
     //Welcome screen to distinguish between company and candidate login

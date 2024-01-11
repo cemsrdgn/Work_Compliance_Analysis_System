@@ -7,7 +7,7 @@
 #include <limits>
 using namespace std;
 
-//It is control for non number inputs. Like chars or symbols. (From ChatGPT)
+//It is control for non number inputs. Like chars or symbols.
 int MenuMethods::getUserInputWithControl() {
     int input;
     while (true) {

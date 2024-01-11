@@ -32,6 +32,8 @@ private:
     string Language;
     string MilitaryService;
 
+    float AdPoint;
+
     int CompanyId;
 
 
@@ -47,6 +49,7 @@ public:
                   string applicationDeadline,
                   int adId,
                   int companyId ,
+                  float adPoint,
                   string sector,
                   string position,
                   string workPreference,
@@ -94,6 +97,7 @@ public:
 
     string getMilitaryService();
 
+    float getAdPoint() ;
 
 };
 

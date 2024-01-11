@@ -16,6 +16,7 @@ Adversitement::Adversitement(
         string applicationDeadline,
         int adId,
         int companyId,
+        float adPoint,
         string sector,
         string position,
         string workPreference,
@@ -33,6 +34,7 @@ Adversitement::Adversitement(
     this->ApplicationDeadline=move(applicationDeadline);
     this->AdId = adId;
     this->CompanyId=companyId;
+    this->AdPoint=adPoint;
     this->Sector = move(sector);
     this->Position = move(position);
     this->WorkPreference = move(workPreference);
@@ -535,6 +537,7 @@ void Adversitement::display() const {
         cout << " Advert Title: " << AdTitle << endl;
         cout << " Company Description:" << CompanyDescription << endl;
         cout << " Salary: " << Salary << endl;
+        cout << " Ad Point: " << AdPoint << endl;
         cout << " City: " << City << endl;
         cout << " Application Deadline:" << ApplicationDeadline << endl;
         cout << " Position:" << Position << endl;
@@ -569,4 +572,8 @@ void Adversitement::displayAllAdversitements(){
 
 int Adversitement::getCompanyId(){
     return CompanyId;
+}
+
+float Adversitement::getAdPoint()  {
+    return AdPoint;
 }

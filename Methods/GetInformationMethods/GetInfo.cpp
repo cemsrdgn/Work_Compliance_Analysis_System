@@ -16,7 +16,7 @@ void getCandidateProfileInfo(string& candidateFirstName, string& candidateLastNa
     cin >> candidateFirstName;
     cout << "Enter your last name:";
     cin >> candidateLastName;
-    cout << "Enter gender(Male/Female/Other):"; //Seçenek sunabiliriz. Male/Female/Other ya da sadece Male/Female
+    cout << "Enter gender(Male/Female/Other):";
     cin >> candidateGender;
     cout << "Enter date of birth: \n"
          << "Your birth day:" ;
@@ -64,6 +64,7 @@ void getCompanyProfileInfo(string& companyName, string& number, string& email, s
 void getAdvertisementInfo(string& adTitle,
                           string& companyDescription,
                           int& salary,
+                          float& point,
                           string& city,
                           string& applicationDeadLine,
                           string& sector,
@@ -83,10 +84,15 @@ void getAdvertisementInfo(string& adTitle,
     cout << "Enter Your Company Description:";
     getline(cin,companyDescription);
 
+    cin.ignore();
+
     cout << "Enter The Your Salary You Will Provide($):";
     cin >> salary;
 
+    cout << "Enter Your Advertisement's Quality(0-100):";
+    cin >> point;
     cin.ignore();
+
     cout << "City:";
     getline(cin,city);
 
